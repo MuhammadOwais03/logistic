@@ -43,11 +43,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Truck className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <span className="text-2xl font-bold text-primary">LogiTrans</span>
+            <div className="flex items-center space-x-2 cursor-pointer">
+                <img
+                  src="/logo.png"
+                  alt="LogiTrans Logo"
+                  className="w-20 h-18"
+                />
+                <span className="text-2xl font-bold text-primary">
+                  LogiTrans
+                </span>
             </div>
             <p
               style={{ color: "hsl(var(--footer-text))" }}
@@ -97,13 +101,11 @@ const Footer = () => {
                   <NavLink
                     to={link.path}
                     style={{
-                      color: 'hsl(var(--footer-text))',
+                      color: "hsl(var(--footer-text))",
                       fontSize: "0.875rem",
-                      borderBottom: "2px solid #ff7700",
                       paddingBottom: "2px",
                     }}
                     className="hover:text-primary transition-colors duration-200"
-                    
                   >
                     {link.name}
                   </NavLink>

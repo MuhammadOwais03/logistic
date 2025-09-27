@@ -36,7 +36,7 @@
     --ring: 28 100% 50%;
     
     /* Footer dark theme */
-    --footer-bg: 0 0% 8%;
+    --footer-bg: 0 0% 29%;
     --footer-text: 0 0% 85%;
     --footer-heading: 28 100% 50%;
     
@@ -118,7 +118,7 @@
   
   /* Advanced button effects */
   .btn-scale {
-    @apply transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-lg;
+    @apply transition-all duration-300 hover:scale-105 active:scale-95 hover:shadow-md;
   }
   
   .btn-glow:hover {
