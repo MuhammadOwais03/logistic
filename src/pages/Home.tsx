@@ -19,6 +19,7 @@ import {
   Star,
   Award,
   Sparkles,
+  Code, Trophy
 } from "lucide-react";
 import heroImage from "@/assets/hero-logistics.jpg";
 import teamImage from "@/assets/team-logistics.jpg";
@@ -107,6 +108,13 @@ const Home = () => {
       gradient: "from-indigo-500 to-purple-500",
     },
     {
+      title: "Reefer Cargo",
+      description:
+        "Refrigerated cargo logistics is all about precision – Customers need commodity expertise, seamless handovers, flexible temperature control.",
+      icon: Thermometer,
+      gradient: "from-blue-400 to-indigo-500",
+    },
+    {
       title: "Custom Brokerage",
       description:
         "We are an authorized customs clearance company in Pakistan, specializing in streamlining the intricate processes involved in international trade.",
@@ -141,20 +149,8 @@ const Home = () => {
       icon: AlertTriangle,
       gradient: "from-red-500 to-orange-500",
     },
-    {
-      title: "Vessel Chartering",
-      description:
-        "We provide vessel chartering, utilizing our extensive knowledge of ship owners and their fleet capacities by selecting the most suitable vessels.",
-      icon: Anchor,
-      gradient: "from-cyan-500 to-teal-500",
-    },
-    {
-      title: "Reefer Cargo",
-      description:
-        "Refrigerated cargo logistics is all about precision – Customers need commodity expertise, seamless handovers, flexible temperature control.",
-      icon: Thermometer,
-      gradient: "from-blue-400 to-indigo-500",
-    },
+    
+    
   ];
 
   const displayedServices = showservices
@@ -194,18 +190,34 @@ const Home = () => {
   ];
 
   const achievements = [
-    { number: "10K+", label: "Shipments Delivered", icon: "📦" },
-    { number: "50+", label: "Countries Served", icon: "🌍" },
-    { number: "24/7", label: "Customer Support", icon: "🚀" },
-    { number: "99.9%", label: "On-Time Delivery", icon: "⚡" },
-  ];
+  {
+    icon: <Code className="w-8 h-8 text-white mx-auto" />, // 👈 Lucide icon
+    number: "150+",
+    label: "Projects Completed",
+  },
+  {
+    icon: <Users className="w-8 h-8 text-white mx-auto" />,
+    number: "50+",
+    label: "Happy Clients",
+  },
+  {
+    icon: <Trophy className="w-8 h-8 text-white mx-auto" />,
+    number: "10+",
+    label: "Awards Won",
+  },
+  {
+    icon: <Star className="w-8 h-8 text-white mx-auto" />,
+    number: "5+",
+    label: "Years Experience",
+  },
+];
+
 
   return (
     <div className="min-h-screen overflow-hidden">
-      {/* Enhanced Hero Section */}
       <section
         id="hero"
-        className="relative h-auto py-12 md:py-20  flex items-center justify-center bg-cover bg-center bg-no-repeat bg-overlay-gradient"
+        className="relative flex items-center justify-center bg-cover bg-center bg-no-repeat bg-overlay-gradient"
         style={{
           backgroundImage: `url(${heroImage})`,
         }}
@@ -224,7 +236,7 @@ const Home = () => {
         ></div>
 
         <div
-          className={`relative z-20 text-center text-white px-4 fade-in-scale ${
+          className={`relative z-20 text-center text-white py-28 px-2 sm:px-4 fade-in-scale ${
             visibleSections.has("hero") ? "visible" : ""
           }`}
         >
@@ -244,7 +256,7 @@ const Home = () => {
             expertise.
           </p>
 
-          <div className="justify-center mb-12">
+          <div className="justify-center mb-8">
             <Button
               size="lg"
               className="btn-scale btn-glow text-lg px-8 py-6 bg-primary hover:bg-primary-hover"
@@ -253,26 +265,39 @@ const Home = () => {
             </Button>
           </div>
 
+          {/* Mouse scroll animation */}
+          <div className="flex justify-center my-16">
+            <div className="mouse-scroll-indicator">
+              <div className="mouse">
+                <div className="wheel"></div>
+              </div>
+              <div className="scroll-text text-white/70 text-sm mt-2">
+                Scroll Down
+              </div>
+            </div>
+          </div>
+
           {/* Achievement stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {achievements.map((achievement, index) => (
-              <div
-                key={achievement.label}
-                className={`text-center glass p-4 rounded-xl backdrop-blur-sm fade-in stagger-${
-                  index + 1
-                } ${visibleSections.has("hero") ? "visible" : ""}`}
-              >
-                <div className="text-2xl mb-1">{achievement.icon}</div>
-                <div className="text-2xl font-bold text-white mb-1">
-                  {achievement.number}
-                </div>
-                <div className="text-xs text-white/80">{achievement.label}</div>
-              </div>
-            ))}
-          </div>
+  {achievements.map((achievement, index) => (
+    <div
+      key={achievement.label}
+      className={`text-center glass p-4 rounded-xl backdrop-blur-sm fade-in stagger-${
+        index + 1
+      } ${visibleSections.has("hero") ? "visible" : ""}`}
+    >
+      <div className="text-2xl mb-1">{achievement.icon}</div>
+      <div className="text-2xl font-bold text-white mb-1">
+        {achievement.number}
+      </div>
+      <div className="text-xs text-white/80">{achievement.label}</div>
+    </div>
+  ))}
+</div>
+
         </div>
       </section>
-
+      ```
       {/* Enhanced What We Do Section */}
       <section
         id="what-we-do"
@@ -320,7 +345,6 @@ const Home = () => {
                     {service.description}
                   </p>
 
-                  {/* Hover overlay */}
                   <div
                     className={` absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 hover:opacity-10 transition-opacity duration-500`}
                   ></div>
@@ -330,7 +354,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Enhanced Our Views Section with Team Image */}
       <section id="our-views" className="section-padding bg-muted/30">
         <div className="container-width">
@@ -418,7 +441,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Enhanced Our Services Section */}
       <section
         id="our-services"
@@ -504,87 +526,41 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Enhanced Our Affiliation Section */}
-      {/* <section id="our-affiliation" className="section-padding bg-muted/20">
-        <div className="container-width">
-          <div
-            className={`text-center mb-12 fade-in ${
-              visibleSections.has("our-affiliation") ? "visible" : ""
-            }`}
-          >
-            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4">
-              <Star className="w-4 h-4 text-primary mr-2" />
-              <span className="text-sm font-medium text-primary">
-                Trusted Partners
-              </span>
-            </div>
-            <h2 className="mb-4">Our Partners & Affiliations</h2>
-            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-              Trusted by leading companies worldwide, we maintain strategic
-              partnerships that enhance our service capabilities and global
-              reach.
-            </p>
-          </div>
-
-          <div
-            className={`grid grid-cols-1 md:grid-cols-5 gap-6 fade-in ${
-              visibleSections.has("our-affiliation") ? "visible" : ""
-            }`}
-          >
-            {partners.map((partner, index) => (
-              <Card
-                key={partner.name}
-                className={`interactive-card text-center border-0 shadow-md hover:shadow-xl transition-all duration-500 stagger-${
-                  index + 1
-                }`}
-              >
-                <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 icon-float">
-                    <Star className="w-8 h-8 text-primary" />
-                  </div>
-                  <h4 className="font-semibold text-foreground mb-2">
-                    {partner.name}
-                  </h4>
-                  <div className="flex justify-center space-x-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-3 h-3 ${
-                          i < Math.floor(partner.rating)
-                            ? "text-orange-400 fill-current"
-                            : "text-gray-300"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {partner.rating}/5.0
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
+      
       {/* CTA Section */}
-      <section className="section-padding bg-primary text-primary-foreground">
-        <div className="container-width text-center">
-          <h2 className="mb-6 text-primary-foreground">
-            Ready to Optimize Your Supply Chain?
-          </h2>
-          <p className="text-xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto">
-            Join thousands of satisfied customers who trust LogiTrans for their
-            logistics needs. Get started today with a custom quote.
-          </p>
-          <Button
-            variant="outline"
-            size="lg"
-            className="btn-scale bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-          >
-            Contact Us Now <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+      <section className="section-padding bg-gradient-to-r from-primary via-primary-hover to-primary text-primary-foreground relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
+          <div
+            className="absolute top-32 right-20 w-16 h-16 bg-white/10 rounded-full animate-pulse"
+            style={{ animationDelay: "1s" }}
+          ></div>
+          <div
+            className="absolute bottom-20 left-1/3 w-12 h-12 bg-white/10 rounded-full animate-pulse"
+            style={{ animationDelay: "2s" }}
+          ></div>
+        </div>
+
+        <div className="container-width text-center relative z-10">
+          <div className="bounce-in">
+            <h2 className="mb-6 text-primary-foreground">
+              Ready to Optimize Your Supply Chain?
+            </h2>
+            <p className="text-xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto">
+              Join thousands of satisfied customers who trust LogiTrans for
+              their logistics needs. Get started today with a custom quote.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                variant="outline"
+                size="lg"
+                className="btn-scale bg-primary-foreground text-primary"
+              >
+                Contact Us Now <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
     </div>

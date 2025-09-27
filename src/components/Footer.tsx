@@ -40,14 +40,14 @@ const Footer = () => {
       className="text-white"
     >
       <div className="container-width section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2 cursor-pointer">
+            <div className="flex items-center space-x-2 cursor-pointer -mt-4">
                 <img
                   src="/logo.png"
                   alt="LogiTrans Logo"
-                  className="w-20 h-18"
+                  className="w-32 h-32"
                 />
                 <span className="text-2xl font-bold text-primary">
                   LogiTrans
@@ -151,11 +151,9 @@ const Footer = () => {
                   style={{ color: "hsl(var(--footer-text))" }}
                   className="text-sm"
                 >
-                  123 Logistics Avenue
+                  D-14 Block, Gulshan e Iqbal,
                   <br />
-                  Business District
-                  <br />
-                  New York, NY 10001
+                  Karachi, Pakistan
                 </span>
               </div>
               <div className="flex items-center space-x-3">
@@ -164,7 +162,7 @@ const Footer = () => {
                   style={{ color: "hsl(var(--footer-text))" }}
                   className="text-sm"
                 >
-                  +92 3365009343
+                  +92 3168622164 - +92 3365009343
                 </span>
               </div>
               <div className="flex items-center space-x-3">
@@ -173,7 +171,7 @@ const Footer = () => {
                   style={{ color: "hsl(var(--footer-text))" }}
                   className="text-sm"
                 >
-                  info@wws-logistics.com
+                  sidra-khadid@wws-logistics.com
                 </span>
               </div>
             </div>
@@ -184,7 +182,7 @@ const Footer = () => {
         <div className="border-t border-white/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p style={{ color: "hsl(var(--footer-text))" }} className="text-sm">
-              © 2024 LogiTrans. All rights reserved.
+              © 2025 LogiTrans. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <a
