@@ -19,15 +19,8 @@ import {
   Zap,
   MessageCircle
 } from 'lucide-react';
-import { z } from 'zod';
+import teamLogistics from '@/assets/team-logistics.jpg';
 import globalNetwork from '@/assets/global-network.jpg';
-
-const contactSchema = z.object({
-  name: z.string().trim().min(2, { message: "Name must be at least 2 characters" }).max(100, { message: "Name must be less than 100 characters" }),
-  email: z.string().trim().email({ message: "Invalid email address" }).max(255, { message: "Email must be less than 255 characters" }),
-  subject: z.string().trim().min(5, { message: "Subject must be at least 5 characters" }).max(200, { message: "Subject must be less than 200 characters" }),
-  message: z.string().trim().min(10, { message: "Message must be at least 10 characters" }).max(1000, { message: "Message must be less than 1000 characters" })
-});
 
 const Contact = () => {
   const { toast } = useToast();
@@ -38,28 +31,55 @@ const Contact = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState({});
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const validateForm = (data) => {
+    const newErrors = {};
+    
+    if (!data.name || data.name.trim().length < 2) {
+      newErrors.name = "Name must be at least 2 characters";
+    }
+    if (!data.email || !/\S+@\S+\.\S+/.test(data.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    if (!data.subject || data.subject.trim().length < 5) {
+      newErrors.subject = "Subject must be at least 5 characters";
+    }
+    if (!data.message || data.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    }
+    
+    return newErrors;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrors({});
 
+    const validationErrors = validateForm(formData);
+    
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setIsSubmitting(false);
+      toast({
+        title: "Please check your input",
+        description: "Some fields need your attention.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
-      // Validate form data
-      const validatedData = contactSchema.parse(formData);
-      
-      // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       toast({
@@ -67,25 +87,14 @@ const Contact = () => {
         description: "We'll get back to you within 24 hours.",
       });
       
-      // Reset form
       setFormData({ name: '', email: '', subject: '', message: '' });
       
     } catch (error) {
-      if (error instanceof z.ZodError) {
-        const newErrors: Record<string, string> = {};
-        error.errors.forEach((err) => {
-          if (err.path[0]) {
-            newErrors[err.path[0] as string] = err.message;
-          }
-        });
-        setErrors(newErrors);
-        
-        toast({
-          title: "Validation Error",
-          description: "Please check the form fields and try again.",
-          variant: "destructive",
-        });
-      }
+      toast({
+        title: "Error sending message",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -140,9 +149,9 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* Enhanced Hero Section with Background Image */}
-      <section 
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section - Fully Responsive */}
+     <section 
         className="relative section-padding bg-cover bg-center bg-no-repeat bg-overlay-gradient parallax-bg"
         style={{ backgroundImage: `url(${globalNetwork})` }}
       >
@@ -166,101 +175,111 @@ const Contact = () => {
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent z-10"></div>
       </section>
 
-      <div className="container-width section-padding relative">
-        <div className="absolute inset-0 bg-dots opacity-30"></div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative z-10">
-          {/* Enhanced Contact Form */}
-          <div className="lg:col-span-2">
-            <Card className="interactive-card glass border-0 shadow-xl bg-gradient-to-br from-white to-gray-50/50">
-              <CardHeader className="pb-6">
-                <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4 w-fit">
-                  <Zap className="w-4 h-4 text-primary mr-2" />
-                  <span className="text-sm font-medium text-primary">Quick Response</span>
-                </div>
-                <CardTitle className="flex items-center space-x-2 text-xl">
-                  <Send className="w-6 h-6 text-primary" />
-                  <span>Send us a Message</span>
-                </CardTitle>
-                <p className="text-muted-foreground mt-2">We'll get back to you within 24 hours</p>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Full Name *</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Enter your full name"
-                        className={errors.name ? 'border-destructive' : ''}
-                      />
-                      {errors.name && <p className="text-destructive text-sm">{errors.name}</p>}
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Enter your email address"
-                        className={errors.email ? 'border-destructive' : ''}
-                      />
-                      {errors.email && <p className="text-destructive text-sm">{errors.email}</p>}
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Subject *</Label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      type="text"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="What is this message about?"
-                      className={errors.subject ? 'border-destructive' : ''}
-                    />
-                    {errors.subject && <p className="text-destructive text-sm">{errors.subject}</p>}
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us more about your logistics needs..."
-                      rows={6}
-                      className={errors.message ? 'border-destructive' : ''}
-                    />
-                    {errors.message && <p className="text-destructive text-sm">{errors.message}</p>}
-                  </div>
-
-                  <Button 
-                    type="submit" 
-                    size="lg" 
-                    disabled={isSubmitting}
-                    className="w-full md:w-auto btn-scale"
-                  >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                    <Send className="ml-2 w-4 h-4" />
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+      {/* Main Content - Responsive Layout */}
+      <div className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 relative">
+        <div className="max-w-7xl mx-auto">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, #3b82f6 1px, transparent 0)`,
+              backgroundSize: '30px 30px'
+            }}></div>
           </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 relative z-10">
+            {/* Contact Form - Responsive */}
+            <div className="lg:col-span-2">
+              <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-shadow duration-300">
+                <CardHeader className="pb-6">
+                  <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4 w-fit">
+                    <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-primary mr-2" />
+                    <span className="text-xs sm:text-sm font-medium text-primary">Quick Response</span>
+                  </div>
+                  <CardTitle className="flex items-center space-x-2 text-lg sm:text-xl">
+                    <Send className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                    <span>Send us a Message</span>
+                  </CardTitle>
+                  <p className="text-gray-600 mt-2 text-sm sm:text-base">We'll get back to you within 24 hours</p>
+                </CardHeader>
+                
+                <CardContent>
+                  <div className="space-y-4 sm:space-y-6">
+                    {/* Name and Email - Stack on mobile, side by side on larger screens */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="name" className="text-sm font-medium">Full Name *</Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          type="text"
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="Enter your full name"
+                          className={`h-10 sm:h-11 ${errors.name ? 'border-red-500' : 'border-gray-300'} focus:border-blue-500 focus:ring-blue-500`}
+                        />
+                        {errors.name && <p className="text-red-500 text-xs sm:text-sm">{errors.name}</p>}
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-sm font-medium">Email Address *</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="Enter your email address"
+                          className={`h-10 sm:h-11 ${errors.email ? 'border-red-500' : 'border-gray-300'} focus:border-blue-500 focus:ring-blue-500`}
+                        />
+                        {errors.email && <p className="text-red-500 text-xs sm:text-sm">{errors.email}</p>}
+                      </div>
+                    </div>
 
-          {/* Enhanced Contact Information */}
-          <div className="space-y-6">
-            {/* Contact Details */}
-            <Card className="interactive-card glass border-0 shadow-xl bg-gradient-to-br from-white to-gray-50/50">
+                    <div className="space-y-2">
+                      <Label htmlFor="subject" className="text-sm font-medium">Subject *</Label>
+                      <Input
+                        id="subject"
+                        name="subject"
+                        type="text"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        placeholder="What is this message about?"
+                        className={`h-10 sm:h-11 ${errors.subject ? 'border-red-500' : 'border-gray-300'} focus:border-blue-500 focus:ring-blue-500`}
+                      />
+                      {errors.subject && <p className="text-red-500 text-xs sm:text-sm">{errors.subject}</p>}
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="message" className="text-sm font-medium">Message *</Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Tell us more about your logistics needs..."
+                        rows={5}
+                        className={`min-h-[120px] resize-none ${errors.message ? 'border-red-500' : 'border-gray-300'} focus:border-blue-500 focus:ring-blue-500`}
+                      />
+                      {errors.message && <p className="text-red-500 text-xs sm:text-sm">{errors.message}</p>}
+                    </div>
+
+                    <Button 
+                      onClick={handleSubmit} 
+                      size="lg" 
+                      disabled={isSubmitting}
+                      className="w-full sm:w-auto bg-primary hover:bg-primary transform hover:scale-105 transition-all duration-200 h-11 sm:h-12"
+                    >
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                      <Send className="ml-2 w-4 h-4" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Contact Information - Responsive */}
+            <div className="space-y-6 lg:space-y-8">
+             <Card className="interactive-card glass border-0 shadow-xl bg-gradient-to-br from-white to-gray-50/50">
               <CardHeader>
                 <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4 w-fit">
                   <Star className="w-4 h-4 text-primary mr-2" />
@@ -296,83 +315,114 @@ const Contact = () => {
                 ))}
               </CardContent>
             </Card>
-
-            {/* Enhanced Quick Contact Options */}
-            <Card className="interactive-card glass border-0 shadow-xl bg-gradient-to-br from-white to-gray-50/50">
-              <CardHeader>
-                <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4 w-fit">
-                  <MessageSquare className="w-4 h-4 text-primary mr-2" />
-                  <span className="text-sm font-medium text-primary">Quick Actions</span>
-                </div>
-                <CardTitle>Quick Contact</CardTitle>
-                <p className="text-muted-foreground text-sm">Choose your preferred method</p>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {quickContact.map((option, index) => (
-                  <div 
-                    key={option.title} 
-                    className={`p-5 bg-gradient-to-r from-muted/30 to-muted/50 rounded-xl interactive-card fade-in-scale visible`}
-                    style={{ animationDelay: `${index * 150}ms` }}
-                  >
-                    <div className="flex items-start space-x-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-primary/10 to-primary/20 rounded-lg flex items-center justify-center icon-float">
-                        <option.icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-foreground">{option.title}</h4>
-                        <p className="text-sm text-muted-foreground mb-3">{option.description}</p>
-                        <Button variant="outline" size="sm" className="btn-scale h-9">
-                          {option.action}
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Enhanced Map/Location Section */}
-      <section className="section-padding bg-muted/30 relative">
-        <div className="absolute inset-0 bg-dots opacity-30"></div>
-        <div className="container-width relative z-10">
-          <div className={`text-center mb-12 fade-in visible`}>
-            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4">
-              <MapPin className="w-4 h-4 text-primary mr-2" />
-              <span className="text-sm font-medium text-primary">Find Us</span>
+      {/* Quick Contact Options - Responsive */}
+      <div className="px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 lg:pb-20">
+        <div className="max-w-5xl mx-auto">
+          <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-shadow duration-300">
+            <CardHeader>
+              <div className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-primary/10 rounded-full mb-4 w-fit">
+                <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 text-primary mr-2" />
+                <span className="text-xs sm:text-sm font-medium text-primary">Quick Actions</span>
+              </div>
+              <CardTitle className="text-lg sm:text-xl">Quick Contact</CardTitle>
+              <p className="text-gray-600 text-xs sm:text-sm">Choose your preferred method</p>
+            </CardHeader>
+            
+            <CardContent className="space-y-3 sm:space-y-4">
+              {quickContact.map((option, index) => (
+                <div 
+                  key={option.title} 
+                  className="p-4 sm:p-5 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl hover:shadow-md transition-all duration-200"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-start space-y-3 sm:space-y-0 sm:space-x-4">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <option.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-semibold text-gray-900 text-sm sm:text-base">{option.title}</h4>
+                      <p className="text-xs sm:text-sm text-gray-600 mb-3 leading-relaxed">{option.description}</p>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="h-8 sm:h-9 text-xs sm:text-sm border-blue-200 hover:border-blue-300 hover:bg-primary/10 transform hover:scale-105 transition-all duration-200"
+                      >
+                        {option.action}
+                        <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Map/Location Section - Responsive */}
+      <section className="bg-gray-100 relative">
+        <div className="absolute inset-0 opacity-5">
+          <div style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, #3b82f6 1px, transparent 0)`,
+            backgroundSize: '30px 30px'
+          }}></div>
+        </div>
+        
+        <div className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-8 sm:mb-12">
+              <div className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-primary/10 rounded-full mb-4">
+                <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-primary mr-2" />
+                <span className="text-xs sm:text-sm font-medium text-primary">Find Us</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-900">Visit Our Office</h2>
+              <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed px-4">
+                Located in the heart of the business district, our office is easily accessible 
+                and equipped with modern facilities to serve your logistics needs.
+              </p>
             </div>
-            <h2 className="mb-4">Visit Our Office</h2>
-            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-              Located in the heart of the business district, our office is easily accessible 
-              and equipped with modern facilities to serve your logistics needs.
-            </p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-background to-muted/50 rounded-2xl p-8 shadow-xl glass border">
-            <div className="h-80 bg-gradient-to-br from-muted/50 to-muted rounded-xl flex items-center justify-center relative overflow-hidden">
-              {/* Animated background pattern */}
-              <div className="absolute inset-0 bg-dots opacity-20"></div>
-              <div className="text-center relative z-10 fade-in-scale visible">
-                <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-hover rounded-3xl flex items-center justify-center mx-auto mb-6 icon-float">
+            
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-white/20">
+              <div className="h-64 sm:h-80 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl flex items-center justify-center relative overflow-hidden">
+                {/* Background pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div style={{
+                    backgroundImage: `radial-gradient(circle at 2px 2px, #3b82f6 1px, transparent 0)`,
+                    backgroundSize: '20px 20px'
+                  }}></div>
+                </div>
+                
+                <div className="text-center relative z-10 px-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-hover rounded-3xl flex items-center justify-center mx-auto mb-6 icon-float">
                   <MapPin className="w-10 h-10 text-primary-foreground" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-foreground">Our Location</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  123 Logistics Avenue, Business District<br />
-                  New York, NY 10001
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Button variant="outline" size="sm" className="btn-scale">
-                    Get Directions
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                  <Button variant="ghost" size="sm" className="btn-scale">
-                    Call Now
-                    <Phone className="ml-2 w-4 h-4" />
-                  </Button>
+                  <h3 className="text-lg sm:text-xl font-bold mb-3 text-gray-900">Our Location</h3>
+                  <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
+                    123 Logistics Avenue, Business District<br />
+                    New York, NY 10001
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="h-9 sm:h-10 border-blue-200 hover:border-blue-300 hover:bg-primary/10 transform hover:scale-105 transition-all duration-200"
+                    >
+                      Get Directions
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="h-9 sm:h-10 hover:bg-primary/10 transform hover:scale-105 transition-all duration-200"
+                    >
+                      Call Now
+                      <Phone className="ml-2 w-4 h-4" />
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -93,7 +93,7 @@ const About = () => {
               <Heart className="w-5 h-5 text-orange-300 mr-2" />
               <span className="text-sm font-medium">Our Story & Values</span>
             </div>
-            <h1 className="mb-6 text-white font-bold">About LogiTrans</h1>
+            <h1 className="mb-6 text-white font-bold">About World Wide Shipping and Logistics (SMC-PVT) LTD</h1>
             <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8">
               Leading the logistics industry with innovative solutions, exceptional service, 
               and unwavering commitment to customer success since 2010.
@@ -140,7 +140,7 @@ const About = () => {
               </div>
               <h2 className="mb-6">Who We Are</h2>
               <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                LogiTrans is a premier logistics company founded on the principles of reliability, 
+                World Wide Shipping and Logistics (SMC-PVT) LTD is a premier logistics company founded on the principles of reliability, 
                 innovation, and customer satisfaction. With over a decade of experience in the 
                 industry, we have built a reputation for delivering exceptional supply chain 
                 solutions to businesses of all sizes.

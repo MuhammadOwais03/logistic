@@ -201,7 +201,7 @@ const Home = () => {
                   <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
                   
                   {/* Hover overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 hover:opacity-10 transition-opacity duration-500`}></div>
+                  <div className={` absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 hover:opacity-10 transition-opacity duration-500`}></div>
                 </CardContent>
               </Card>
             ))}
@@ -220,7 +220,7 @@ const Home = () => {
               </div>
               <h2 className="mb-6">Our Vision & Values</h2>
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                At LogiTrans, we envision a world where logistics seamlessly connects businesses 
+                At World Wide Shipping and Logistics (SMC-PVT) LTD, we envision a world where logistics seamlessly connects businesses 
                 and communities. Our commitment to innovation, sustainability, and customer 
                 satisfaction drives everything we do, every single day.
               </p>
