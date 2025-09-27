@@ -13,9 +13,14 @@ import {
   Send,
   MessageSquare,
   Headphones,
-  Building
+  Building,
+  ArrowRight,
+  Star,
+  Zap,
+  MessageCircle
 } from 'lucide-react';
 import { z } from 'zod';
+import globalNetwork from '@/assets/global-network.jpg';
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, { message: "Name must be at least 2 characters" }).max(100, { message: "Name must be less than 100 characters" }),
@@ -136,29 +141,47 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="section-padding bg-muted/30">
-        <div className="container-width">
-          <div className="text-center fade-in visible">
-            <h1 className="mb-6">Contact Us</h1>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+      {/* Enhanced Hero Section with Background Image */}
+      <section 
+        className="relative section-padding bg-cover bg-center bg-no-repeat bg-overlay-gradient parallax-bg"
+        style={{ backgroundImage: `url(${globalNetwork})` }}
+      >
+        <div className="relative z-20 container-width">
+          <div className="text-center text-white fade-in-scale visible">
+            <div className="inline-flex items-center px-4 py-2 bg-white/20 glass rounded-full mb-6 backdrop-blur-sm">
+              <MessageCircle className="w-5 h-5 text-orange-300 mr-2" />
+              <span className="text-sm font-medium">Get In Touch</span>
+            </div>
+            <h1 className="mb-6 text-white font-bold">Contact Us</h1>
+            <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8">
               Ready to optimize your supply chain? Get in touch with our logistics experts 
               and discover how we can help streamline your operations.
             </p>
+            <Button size="lg" variant="outline" className="btn-scale btn-glow bg-white text-primary hover:bg-white/90">
+              Start Conversation
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent z-10"></div>
       </section>
 
-      <div className="container-width section-padding">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Contact Form */}
+      <div className="container-width section-padding relative">
+        <div className="absolute inset-0 bg-dots opacity-30"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative z-10">
+          {/* Enhanced Contact Form */}
           <div className="lg:col-span-2">
-            <Card className="card-hover">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
+            <Card className="interactive-card glass border-0 shadow-xl bg-gradient-to-br from-white to-gray-50/50">
+              <CardHeader className="pb-6">
+                <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4 w-fit">
+                  <Zap className="w-4 h-4 text-primary mr-2" />
+                  <span className="text-sm font-medium text-primary">Quick Response</span>
+                </div>
+                <CardTitle className="flex items-center space-x-2 text-xl">
                   <Send className="w-6 h-6 text-primary" />
                   <span>Send us a Message</span>
                 </CardTitle>
+                <p className="text-muted-foreground mt-2">We'll get back to you within 24 hours</p>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -234,28 +257,37 @@ const Contact = () => {
             </Card>
           </div>
 
-          {/* Contact Information */}
+          {/* Enhanced Contact Information */}
           <div className="space-y-6">
             {/* Contact Details */}
-            <Card>
+            <Card className="interactive-card glass border-0 shadow-xl bg-gradient-to-br from-white to-gray-50/50">
               <CardHeader>
+                <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4 w-fit">
+                  <Star className="w-4 h-4 text-primary mr-2" />
+                  <span className="text-sm font-medium text-primary">Direct Contact</span>
+                </div>
                 <CardTitle>Contact Information</CardTitle>
+                <p className="text-muted-foreground text-sm">Multiple ways to reach us</p>
               </CardHeader>
               <CardContent className="space-y-6">
-                {contactInfo.map((info) => (
-                  <div key={info.title} className="space-y-2">
+                {contactInfo.map((info, index) => (
+                  <div 
+                    key={info.title} 
+                    className={`space-y-3 fade-in ${index % 2 === 0 ? 'fade-in-left' : 'fade-in-right'} visible`}
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <info.icon className="w-5 h-5 text-primary" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-primary/20 rounded-xl flex items-center justify-center icon-float">
+                        <info.icon className="w-6 h-6 text-primary" />
                       </div>
                       <div>
-                        <h4 className="font-medium text-foreground">{info.title}</h4>
+                        <h4 className="font-semibold text-foreground">{info.title}</h4>
                         <p className="text-xs text-muted-foreground">{info.description}</p>
                       </div>
                     </div>
-                    <div className="ml-13 space-y-1">
-                      {info.details.map((detail, index) => (
-                        <p key={index} className="text-sm text-muted-foreground">
+                    <div className="ml-15 space-y-1">
+                      {info.details.map((detail, detailIndex) => (
+                        <p key={detailIndex} className="text-sm text-muted-foreground font-medium">
                           {detail}
                         </p>
                       ))}
@@ -265,21 +297,33 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            {/* Quick Contact Options */}
-            <Card>
+            {/* Enhanced Quick Contact Options */}
+            <Card className="interactive-card glass border-0 shadow-xl bg-gradient-to-br from-white to-gray-50/50">
               <CardHeader>
+                <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4 w-fit">
+                  <MessageSquare className="w-4 h-4 text-primary mr-2" />
+                  <span className="text-sm font-medium text-primary">Quick Actions</span>
+                </div>
                 <CardTitle>Quick Contact</CardTitle>
+                <p className="text-muted-foreground text-sm">Choose your preferred method</p>
               </CardHeader>
               <CardContent className="space-y-4">
-                {quickContact.map((option) => (
-                  <div key={option.title} className="p-4 bg-muted/50 rounded-lg">
-                    <div className="flex items-start space-x-3">
-                      <option.icon className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                {quickContact.map((option, index) => (
+                  <div 
+                    key={option.title} 
+                    className={`p-5 bg-gradient-to-r from-muted/30 to-muted/50 rounded-xl interactive-card fade-in-scale visible`}
+                    style={{ animationDelay: `${index * 150}ms` }}
+                  >
+                    <div className="flex items-start space-x-4">
+                      <div className="w-10 h-10 bg-gradient-to-br from-primary/10 to-primary/20 rounded-lg flex items-center justify-center icon-float">
+                        <option.icon className="w-5 h-5 text-primary" />
+                      </div>
                       <div className="flex-1">
-                        <h4 className="font-medium text-foreground text-sm">{option.title}</h4>
-                        <p className="text-xs text-muted-foreground mb-2">{option.description}</p>
-                        <Button variant="outline" size="sm" className="text-xs h-8">
+                        <h4 className="font-semibold text-foreground">{option.title}</h4>
+                        <p className="text-sm text-muted-foreground mb-3">{option.description}</p>
+                        <Button variant="outline" size="sm" className="btn-scale h-9">
                           {option.action}
+                          <ArrowRight className="ml-2 w-4 h-4" />
                         </Button>
                       </div>
                     </div>
@@ -291,10 +335,15 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Map/Location Section */}
-      <section className="section-padding bg-muted/30">
-        <div className="container-width">
-          <div className="text-center mb-12">
+      {/* Enhanced Map/Location Section */}
+      <section className="section-padding bg-muted/30 relative">
+        <div className="absolute inset-0 bg-dots opacity-30"></div>
+        <div className="container-width relative z-10">
+          <div className={`text-center mb-12 fade-in visible`}>
+            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4">
+              <MapPin className="w-4 h-4 text-primary mr-2" />
+              <span className="text-sm font-medium text-primary">Find Us</span>
+            </div>
             <h2 className="mb-4">Visit Our Office</h2>
             <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
               Located in the heart of the business district, our office is easily accessible 
@@ -302,18 +351,29 @@ const Contact = () => {
             </p>
           </div>
           
-          <div className="bg-background rounded-xl p-8 shadow-lg">
-            <div className="h-80 bg-muted rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2 text-foreground">Our Location</h3>
-                <p className="text-muted-foreground">
+          <div className="bg-gradient-to-br from-background to-muted/50 rounded-2xl p-8 shadow-xl glass border">
+            <div className="h-80 bg-gradient-to-br from-muted/50 to-muted rounded-xl flex items-center justify-center relative overflow-hidden">
+              {/* Animated background pattern */}
+              <div className="absolute inset-0 bg-dots opacity-20"></div>
+              <div className="text-center relative z-10 fade-in-scale visible">
+                <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-hover rounded-3xl flex items-center justify-center mx-auto mb-6 icon-float">
+                  <MapPin className="w-10 h-10 text-primary-foreground" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-foreground">Our Location</h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
                   123 Logistics Avenue, Business District<br />
                   New York, NY 10001
                 </p>
-                <Button variant="outline" size="sm" className="mt-4">
-                  Get Directions
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <Button variant="outline" size="sm" className="btn-scale">
+                    Get Directions
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                  <Button variant="ghost" size="sm" className="btn-scale">
+                    Call Now
+                    <Phone className="ml-2 w-4 h-4" />
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
