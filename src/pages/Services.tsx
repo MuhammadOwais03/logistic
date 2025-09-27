@@ -166,7 +166,7 @@ const Services = () => {
                 <CardContent className="p-6 relative z-10">
                   <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 icon-float ${hoveredService === service.title ? 'scale-110' : ''}`} 
                        style={{ background: `linear-gradient(135deg, ${service.color.split(' ')[1]}, ${service.color.split(' ')[3]})` }}>
-                    <service.icon className="w-8 h-8 text-white" />
+                    <service.icon className="w-8 h-8 text-orange-500" />
                   </div>
                   
                   <h3 className="text-lg font-semibold mb-3 text-foreground transition-colors duration-300">
@@ -242,7 +242,7 @@ const Services = () => {
             ].map((service, index) => (
               <Card 
                 key={service.title} 
-                className={`glass text-white border-white/20 hover:bg-white/20 transition-all duration-500 fade-in-left ${visibleSections.has('additional-services') ? 'visible' : ''}`}
+                className={`glass text-white border-white/20 hover:bg-white/40 bg-white/20 transition-all duration-500 fade-in-left ${visibleSections.has('additional-services') ? 'visible' : ''}`}
                 style={{ animationDelay: `${index * 200}ms` }}
               >
                 <CardContent className="p-8">

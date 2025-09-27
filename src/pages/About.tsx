@@ -198,7 +198,7 @@ const About = () => {
             {whyChooseUs.map((item, index) => (
               <Card 
                 key={item.title} 
-                className={`glass text-white border-white/20 hover:bg-white/20 transition-all duration-500 interactive-card fade-in-scale ${visibleSections.has('why-choose-us') ? 'visible' : ''}`}
+                className={`glass text-white border-white/20 hover:bg-white/40 bg-white/20 transition-all duration-500 interactive-card fade-in-scale ${visibleSections.has('why-choose-us') ? 'visible' : ''}`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <CardContent className="p-6">

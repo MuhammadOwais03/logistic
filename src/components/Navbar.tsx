@@ -18,10 +18,8 @@ const Navbar = () => {
       <div className="container-width">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <NavLink to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <Truck className="w-6 h-6 text-primary-foreground" />
-            </div>
+          <NavLink to="/" className="flex items-center space-x-2">          
+              <img src="/logo.png" alt="LogiTrans Logo" className="w-20 h-18" />            
             <span className="text-2xl font-bold text-primary">LogiTrans</span>
           </NavLink>
 
