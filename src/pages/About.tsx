@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import teamLogistics from '@/assets/team-logistics.jpg';
 import globalNetwork from '@/assets/global-network.jpg';
+import aboutImage from '@/assets/about.jpeg';
 
 const About = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -113,6 +114,11 @@ const About = () => {
         <div className="container-width relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className={`fade-in-left ${visibleSections.has('who-we-are') ? 'visible' : ''}`}>
+              <img
+                src={aboutImage}
+                alt="About World Wide Shipping and Logistics"
+                className="rounded-3xl shadow-xl w-full object-cover mb-8 border border-primary/10"
+              />
               <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-3xl p-8 glass border border-primary/10">
                 <div className="grid grid-cols-2 gap-8">
                   {achievements.map((achievement, index) => (
