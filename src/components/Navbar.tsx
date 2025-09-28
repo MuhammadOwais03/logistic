@@ -60,7 +60,7 @@ const Navbar = () => {
             {/* Logo */}
             <div className="flex items-center space-x-2 cursor-pointer">          
               <img src="/logo.png" alt="LogiTrans Logo" className="w-24 h-24 sm:w-28 sm:h-28" />            
-              <span className="text-2xl font-bold text-primary">LogiTrans</span>
+              <span className="text-2xl font-bold text-primary">WWS LOGISTICS</span>
             </div>
 
             {/* Desktop Navigation */}
