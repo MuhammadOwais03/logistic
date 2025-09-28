@@ -68,7 +68,7 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <NavLink
                   key={item.name}
-                  to="/"
+                  to={item.path}
                   onClick={() => handleNavClick(item.name)}
                   className={`font-medium px-4 py-3 rounded-lg ${activeItem === item.name ? 'text-primary bg-primary/10' : 'text-foreground'}`}
                 >
