@@ -150,6 +150,10 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+
+      
+
+
       {/* Hero Section - Fully Responsive */}
       <section
         className="relative section-padding bg-cover bg-center bg-no-repeat bg-overlay-gradient parallax-bg"
@@ -486,84 +490,6 @@ const Contact = () => {
         </div>
       </div> */}
 
-      {/* Map/Location Section - Responsive */}
-      {/* <section className="bg-gray-100 relative">
-        <div className="absolute inset-0 opacity-5">
-          <div
-            style={{
-              backgroundImage: `radial-gradient(circle at 2px 2px, #3b82f6 1px, transparent 0)`,
-              backgroundSize: "30px 30px",
-            }}
-          ></div>
-        </div>
-
-        <div className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 relative z-10">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-8 sm:mb-12">
-              <div className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-primary/10 rounded-full mb-4">
-                <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-primary mr-2" />
-                <span className="text-xs sm:text-sm font-medium text-primary">
-                  Find Us
-                </span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-                Visit Our Office
-              </h2>
-              <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed px-4">
-                Located in the heart of the business district, our office is
-                easily accessible and equipped with modern facilities to serve
-                your logistics needs.
-              </p>
-            </div>
-
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-white/20">
-              <div className="h-64 sm:h-80 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl flex items-center justify-center relative overflow-hidden">
-                
-                <div className="absolute inset-0 opacity-10">
-                  <div
-                    style={{
-                      backgroundImage: `radial-gradient(circle at 2px 2px, #3b82f6 1px, transparent 0)`,
-                      backgroundSize: "20px 20px",
-                    }}
-                  ></div>
-                </div>
-
-                <div className="text-center relative z-10 px-4">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-hover rounded-3xl flex items-center justify-center mx-auto mb-6 icon-float">
-                    <MapPin className="w-10 h-10 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold mb-3 text-gray-900">
-                    Our Location
-                  </h3>
-                  <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-                    123 Logistics Avenue, Business District
-                    <br />
-                    New York, NY 10001
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="h-9 sm:h-10 border-blue-200 hover:border-blue-300 hover:bg-primary/10 transform hover:scale-105 transition-all duration-200"
-                    >
-                      Get Directions
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-9 sm:h-10 hover:bg-primary/10 transform hover:scale-105 transition-all duration-200"
-                    >
-                      Call Now
-                      <Phone className="ml-2 w-4 h-4" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
       <LocationSection />
       
     </div>

@@ -1,15 +1,16 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import { MapPin, ArrowRight, Phone } from 'lucide-react'; // Assuming Lucide icons are used
-import L from 'leaflet';
+import React from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import { MapPin, ArrowRight, Phone } from "lucide-react"; // Assuming Lucide icons are used
+import L from "leaflet";
 
 // Fix for default marker icon in Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+  iconRetinaUrl:
+    "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
 
 const LocationSection = () => {
@@ -45,9 +46,9 @@ const LocationSection = () => {
               Visit Our Office
             </h2>
             <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed px-2 sm:px-4">
-              Located in the heart of the business district, our office is easily
-              accessible and equipped with modern facilities to serve your
-              logistics needs.
+              Located in the heart of the business district, our office is
+              easily accessible and equipped with modern facilities to serve
+              your logistics needs.
             </p>
           </div>
 
@@ -57,7 +58,7 @@ const LocationSection = () => {
               <MapContainer
                 center={position}
                 zoom={15}
-                style={{ height: '100%', width: '100%' }}
+                style={{ height: "100%", width: "100%" }}
                 className="z-10"
               >
                 <TileLayer
@@ -65,23 +66,38 @@ const LocationSection = () => {
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 />
                 <Marker position={position}>
-                  <Popup>
-                    D-14 Block, Gulshan e Iqbal, Karachi, Pakistan
-                  </Popup>
+                  <Popup>D-14 Block, Gulshan e Iqbal, Karachi, Pakistan</Popup>
                 </Marker>
               </MapContainer>
             </div>
 
             {/* Info Section */}
             <div className="text-center relative z-10 mt-4 sm:mt-6 px-4">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br  from-primary to-primary-hover rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6 icon-float">
+              {/* <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br  from-primary to-primary-hover rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6 icon-float">
                 <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+              </div> */}
+              {/* Double Ring Design */}
+          <div className="text-center">
+            <div className="relative group">
+              <div className="relative w-20 h-20 mx-auto mb-6">
+                {/* Outer ring */}
+                <div className="absolute inset-0 rounded-full border-4 border-gradient-to-r border-yellow-400 opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500 animate-ping"></div>
+                {/* Inner container */}
+                <div className="absolute inset-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <MapPin className="w-8 h-8 text-white" />
+                </div>
+                {/* Center pulse */}
+                <div className="absolute inset-6 bg-white/30 rounded-full opacity-0 group-hover:opacity-100 animate-pulse transition-opacity duration-500"></div>
               </div>
+              
+            </div>
+          </div>
+
               <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 text-gray-900">
                 Our Location
               </h3>
               <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-                D-14 Block, Gulshan e Iqbal, 
+                D-14 Block, Gulshan e Iqbal,
                 <br />
                 Karachi, Pakistan
               </p>
