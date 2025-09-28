@@ -80,6 +80,28 @@ const About = () => {
     },
   ];
 
+  const ourFoundation = [
+              {
+                icon: Target,
+                title: 'Our Mission',
+                content: 'To provide innovative, reliable, and cost-effective logistics solutions that empower businesses to achieve their goals while contributing to sustainable global trade and commerce.',
+                gradient: "from-blue-500 to-cyan-500",
+              },
+              {
+                icon: Users,
+                title: 'Our Vision',
+                content: 'To be the world\'s most trusted logistics partner, connecting businesses and communities through seamless, technology-driven supply chain solutions that create lasting value.',
+                gradient: "from-indigo-500 to-purple-500",
+              },
+              {
+                icon: Shield,
+                title: 'Our Policy',
+                content: 'We are committed to maintaining the highest standards of integrity, transparency, and environmental responsibility in all our operations while ensuring customer satisfaction and employee well-being.',
+                
+                gradient: "from-blue-400 to-indigo-500",
+              },
+            ];
+
   return (
     <div className="min-h-screen">
       {/* Enhanced Hero Section with Background Image */}
@@ -91,18 +113,20 @@ const About = () => {
         <div className="relative z-20 container-width">
           <div className={`text-center text-white fade-in-scale ${visibleSections.has('about-hero') ? 'visible' : ''}`}>
             <div className="inline-flex items-center px-4 py-2 bg-white/20 glass rounded-full mb-6 backdrop-blur-sm">
-              <Heart className="w-5 h-5 text-orange-300 mr-2" />
+              <Heart className="w-5 h-5 text-orange-500 mr-2" />
               <span className="text-sm font-medium">Our Story & Values</span>
             </div>
             <h1 className="mb-6 text-white font-bold">About World Wide Shipping and Logistics (SMC-PVT) LTD</h1>
+            
             <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8">
               Leading the logistics industry with innovative solutions, exceptional service, 
               and unwavering commitment to customer success since 2010.
             </p>
-            <Button size="lg" variant="outline" className="btn-scale btn-glow bg-white text-primary hover:bg-white/90">
+            <Button size="lg" variant="outline" className="btn-scale btn-glow bg-white text-primary hover:text-primary hover:bg-primary-hover">
               Learn Our Story
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+            
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent z-10"></div>
@@ -236,42 +260,58 @@ const About = () => {
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Target,
-                title: 'Our Mission',
-                content: 'To provide innovative, reliable, and cost-effective logistics solutions that empower businesses to achieve their goals while contributing to sustainable global trade and commerce.',
-                gradient: 'from-orange-500 to-orange-600',
-              },
-              {
-                icon: Users,
-                title: 'Our Vision',
-                content: 'To be the world\'s most trusted logistics partner, connecting businesses and communities through seamless, technology-driven supply chain solutions that create lasting value.',
-                gradient: 'from-blue-500 to-blue-600',
-              },
-              {
-                icon: Shield,
-                title: 'Our Policy',
-                content: 'We are committed to maintaining the highest standards of integrity, transparency, and environmental responsibility in all our operations while ensuring customer satisfaction and employee well-being.',
-                gradient: 'from-green-500 to-green-600',
-              },
-            ].map((item, index) => (
-              <Card 
-                key={item.title} 
-                className={`text-center interactive-card relative overflow-hidden border-0 shadow-lg bg-gradient-to-br from-white to-gray-50 fade-in-scale ${visibleSections.has('mission-vision-policy') ? 'visible' : ''}`}
-                style={{ animationDelay: `${index * 200}ms` }}
+            {ourFoundation.map((item, index) => (
+              // <Card 
+              //   key={item.title} 
+              //   className={`text-center interactive-card relative overflow-hidden border-0 shadow-lg bg-gradient-to-br from-white to-gray-50 fade-in-scale ${visibleSections.has('mission-vision-policy') ? 'visible' : ''}`}
+              //   style={{ animationDelay: `${index * 200}ms` }}
+              // >
+
+               <Card
+                key={item.title}
+                className={`interactive-card border-0 shadow-lg hover:shadow-xl overflow-hidden bg-white backdrop-blur-sm fade-in-scale group relative transition-all duration-300 hover:-translate-y-2 ${visibleSections.has('mission-vision-policy') ? 'visible' : ''}`}
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-5`}></div>
-                <CardContent className="p-8 relative z-10">
+{/* Hover overlay */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-700 z-10`}
+                ></div>
+
+                {/* <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-5`}></div> */}
+                {/* <CardContent className="p-8 relative z-10">
                   <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 icon-float bg-gradient-to-br ${item.gradient}`}>
                     <item.icon className="w-10 h-10 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold mb-4 text-foreground">{item.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{item.content}</p>
+                </CardContent> */}
+                <CardContent className="p-6 relative z-20">
+                  {/* Icon with subtle floating animation */}
+                  <div
+                    className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-105 transition-transform duration-500 ease-out`}
+                  >
+                    <item.icon className="w-6 h-6 text-white" />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-bold mb-3 text-foreground line-clamp-1">
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
+                    {item.content}
+                  </p>
+
+                  {/* Bottom accent line */}
+                  <div
+                    className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${item.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
+                  ></div>
                 </CardContent>
               </Card>
             ))}
           </div>
+
+    
         </div>
       </section>
 
@@ -292,13 +332,14 @@ const About = () => {
               and achieve your business objectives with our comprehensive logistics solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="outline" size="lg" className="btn-scale btn-magnetic bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-                Start Partnership 
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button variant="ghost" size="lg" className="btn-scale text-primary-foreground border-primary-foreground hover:bg-primary-foreground/10">
-                Schedule Meeting
-              </Button>
+            
+              <Button
+                variant="outline"
+                size="lg"
+                className="btn-scale bg-primary-foreground text-primary"
+              >
+                Start Partnership <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>              
             </div>
           </div>
         </div>
