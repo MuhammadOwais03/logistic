@@ -171,7 +171,7 @@ const Footer = () => {
                   style={{ color: "hsl(var(--footer-text))" }}
                   className="text-sm"
                 >
-                  sidra-khadid@wws-logistics.com
+                   info@wws-logistics.com
                 </span>
               </div>
             </div>

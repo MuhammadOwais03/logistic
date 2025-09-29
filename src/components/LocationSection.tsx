@@ -106,14 +106,14 @@ const LocationSection = () => {
                   href="https://www.google.com/maps/dir/?api=1&destination=D-14+Block,Gulshan-e-Iqbal,Karachi,Pakistan"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="h-9 sm:h-10 px-4 sm:px-5 border border-primary hover:border-primary-300 hover:bg-primary-500/10 text-primary-600 font-medium rounded-lg flex items-center justify-center transform hover:scale-105 transition-all duration-200 text-sm sm:text-base"
+                  className="h-9 sm:h-10 px-4 sm:px-5 border border-primary hover:border-primary-300 text-primary font-medium rounded-lg flex items-center justify-center transform hover:scale-105 transition-all duration-200 text-sm sm:text-base"
                 >
                   Get Directions
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </a>
                 <a
                   href="tel:+922134981234"
-                  className="h-9 sm:h-10 px-4 sm:px-5 text-gray-600 hover:bg-primary/10 font-medium rounded-lg flex items-center justify-center transform hover:scale-105 transition-all duration-200 text-sm sm:text-base"
+                  className="h-9 sm:h-10 px-4 sm:px-5 text-gray-600 hover:text-primary hover:bg-primary/10 font-medium rounded-lg flex items-center justify-center transform hover:scale-105 transition-all duration-200 text-sm sm:text-base"
                 >
                   Call Now
                   <Phone className="ml-2 w-4 h-4" />
