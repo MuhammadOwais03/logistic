@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import { MapPin, ArrowRight, Phone } from "lucide-react"; // Assuming Lucide icons are used
 import L from "leaflet";
 
+
 // Fix for default marker icon in Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
