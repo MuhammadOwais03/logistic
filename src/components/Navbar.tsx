@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Menu, X, MapPin, Mail, Phone } from 'lucide-react';
 
 const Navbar = () => {
@@ -66,14 +66,14 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
               {navItems.map((item) => (
-                <NavLink
+                <Link
                   key={item.name}
                   to={item.path}
                   onClick={() => handleNavClick(item.name)}
                   className={`font-medium px-4 py-3 rounded-lg ${activeItem === item.name ? 'text-primary bg-primary/10' : 'text-foreground'}`}
                 >
                   {item.name}
-                </NavLink>
+                </Link>
               ))}
               
               <div className="ml-6 pl-6 border-l ">
@@ -98,14 +98,14 @@ const Navbar = () => {
             <div className="md:hidden border-t border-border bg-white animate-slideDown">
               <div className="py-6 space-y-1">
                 {navItems.map((item) => (
-                  <NavLink
+                  <Link
                     to={item.path}
                     key={item.name}
                     onClick={() => handleNavClick(item.name)}
                     className={`flex flex-col w-full text-left font-medium px-4 py-4 rounded-lg ${activeItem === item.name ? 'text-primary bg-primary/10 border-l-4 border-primary' : 'text-foreground'}`}
                   >
                     {item.name}
-                  </NavLink>
+                  </Link>
                 ))}
                 
                 <div className="pt-6 mt-6 border-t ">
