@@ -9,6 +9,8 @@ import {
   CheckCircle, 
   TrendingUp,
   Globe,
+  Globe2,
+  Headphones,CheckCircle2,
   Clock,
   ArrowRight,
   Star,
@@ -41,11 +43,27 @@ const About = () => {
   }, []);
 
   const achievements = [
-    { number: '1000+', label: 'Happy Clients' },
-    { number: '50+', label: 'Countries Served' },
-    { number: '24/7', label: 'Support Available' },
-    { number: '99.9%', label: 'Delivery Success Rate' },
-  ];
+  {
+    number: "1000+",
+    label: "Happy Clients",
+    icon: Users,             // 👥 Users icon
+  },
+  {
+    number: "50+",
+    label: "Countries Served",
+    icon: Globe2,            // 🌍 Globe icon
+  },
+  {
+    number: "24/7",
+    label: "Support Available",
+    icon: Headphones,        // 🎧 Support/Headset icon
+  },
+  {
+    number: "99.9%",
+    label: "Delivery Success Rate",
+    icon: CheckCircle2,      // ✅ Success check icon
+  },
+];
 
   const whyChooseUs = [
     {
@@ -137,7 +155,7 @@ const About = () => {
         <div className="absolute inset-0 bg-dots opacity-30"></div>
         <div className="container-width relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className={`fade-in-left ${visibleSections.has('who-we-are') ? 'visible' : ''}`}>
+            {/* <div className={`fade-in-left ${visibleSections.has('who-we-are') ? 'visible' : ''}`}>
               <img
                 src={aboutImage}
                 alt="About World Wide Shipping and Logistics"
@@ -158,6 +176,48 @@ const About = () => {
                         {achievement.label}
                       </div>
                     </div>
+                  ))}
+                </div>
+              </div>
+            </div> */}
+            <div
+              className={`fade-in-right ${
+                visibleSections.has("who-we-are") ? "visible" : ""
+              }`}
+            >
+              <div className="relative">
+                <img
+                  src={aboutImage}
+                  alt="LogiTrans Team"
+                  className="rounded-2xl shadow-2xl w-full h-120 object-fit-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl"></div>
+
+                {/* Feature cards overlay */}
+                <div className="absolute -bottom-8 -right-8 grid grid-cols-1 gap-4">
+                  {achievements.map((feature, index) => (
+                    <Card
+                      key={feature.label}
+                      className={`glass border-white/20 p-4 w-48 card-float stagger-${
+                        index + 1
+                      }`}
+                    >
+                      <CardContent className="p-0">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+                            <feature.icon className="w-5 h-5 text-primary" />
+                          </div>
+                          <div>
+                            <div className="font-semibold text-sm text-foreground">
+                              {feature.number}
+                            </div>
+                            <div className="text-xs text-muted-foreground">
+                              {feature.label}
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
                   ))}
                 </div>
               </div>
