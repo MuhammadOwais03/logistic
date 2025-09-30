@@ -39,20 +39,29 @@ const Footer = () => {
       style={{ backgroundColor: "hsl(var(--footer-bg))" }}
       className="text-white"
     >
-      <div className="container-width section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+      <div className="container-width  pt-2 pb-8 sm:pt-6 sm:pb-10">
+        {/* Company Logo and Name - Full Width at Top */}
+        <div className="flex items-center justify-center space-x-3 mb-12 pb-8 border-b border-white/20">
+          <img
+            src="/logo.png"
+            alt="WorldWide Shipping and Logistics Logo"
+            className="w-[12rem] h-[12rem] flex-shrink-0"
+          />
+          <span className="text-4xl font-bold text-primary leading-tight">
+            WorldWide Shipping and Logistics (Smc-Pvt) Ltd.
+          </span>
+        </div>
+
+        {/* Footer Content Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2 cursor-pointer -mt-4">
-                <img
-                  src="/logo.png"
-                  alt="LogiTrans Logo"
-                  className="w-34 h-32"
-                />
-                <span className="text-2xl font-bold text-primary">
-                  LogiTrans
-                </span>
-            </div>
+          <div className="space-y-6">
+            <h3
+              style={{ color: "hsl(var(--footer-heading))" }}
+              className="text-lg font-semibold"
+            >
+              About Us
+            </h3>
             <p
               style={{ color: "hsl(var(--footer-text))" }}
               className="text-sm leading-relaxed"
@@ -88,15 +97,6 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
-                // <li key={link.name}>
-                //   <NavLink
-                //     to={link.path}
-                //     style={{ color: 'hsl(var(--footer-text))' }}
-                //     className="text-sm hover:text-primary transition-colors duration-200 link-underline"
-                //   >
-                //     {link.name}
-                //   </NavLink>
-                // </li>
                 <li key={link.name}>
                   <NavLink
                     to={link.path}
@@ -151,7 +151,7 @@ const Footer = () => {
                   style={{ color: "hsl(var(--footer-text))" }}
                   className="text-sm"
                 >
-                  D-14 Block, Gulshan e Iqbal,
+                  D-14 Block 2, Gulshan e Iqbal,
                   <br />
                   Karachi, Pakistan
                 </span>
@@ -162,7 +162,7 @@ const Footer = () => {
                   style={{ color: "hsl(var(--footer-text))" }}
                   className="text-sm"
                 >
-                  +92 3168622164 - +92 3365009343
+                  +92 3365009343
                 </span>
               </div>
               <div className="flex items-center space-x-3">
@@ -182,7 +182,7 @@ const Footer = () => {
         <div className="border-t border-white/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p style={{ color: "hsl(var(--footer-text))" }} className="text-sm">
-              © 2025 LogiTrans. All rights reserved.
+              © 2025 WorldWide Shipping and Logistics (Smc-Pvt) Ltd.. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <a
@@ -208,5 +208,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-

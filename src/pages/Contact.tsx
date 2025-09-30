@@ -101,8 +101,8 @@ const Contact = () => {
     try {
       // EmailJS configuration - Replace these with your actual values
       const serviceID = 'YOUR_SERVICE_ID';
-      const templateID = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS Template ID
-      const publicKey = 'YOUR_PUBLIC_KEY'; // Replace with your EmailJS Public Key
+      const templateID = 'template_htesbw9'; // Replace with your EmailJS Template ID
+      const publicKey = 'gFOuyiNbhD3diYtlB'; // Replace with your EmailJS Public Key
 
 
 
@@ -217,17 +217,10 @@ const Contact = () => {
                       <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
                         <Phone className="w-4 h-4 text-white" />
                       </div>
-                      <span className="text-sm text-white">+92 3168622164</span>
+                      <span className="text-sm text-white">+92 3365009343</span>
                     </div>
 
-                    <div className="flex items-center space-x-4">
-                      <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                        <Phone className="w-4 h-4 text-white" />
-                      </div>
-                      <span className="text-sm text-white">
-                        +92 3365009343
-                      </span>
-                    </div>
+                   
 
                     <div className="flex items-center space-x-4">
                       <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
@@ -243,7 +236,7 @@ const Contact = () => {
                         <MapPin className="w-4 h-4 text-white" />
                       </div>
                       <div className="text-sm leading-relaxed text-white">
-                        D-14 Block, Gulshan e Iqbal, <br /> Karachi, Pakistan
+                        D-14 Block 2, Gulshan e Iqbal, <br /> Karachi, Pakistan
                       </div>
                     </div>
                   </div>

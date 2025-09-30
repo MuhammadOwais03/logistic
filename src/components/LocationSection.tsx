@@ -67,7 +67,7 @@ const LocationSection = () => {
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 />
                 <Marker position={position}>
-                  <Popup>D-14 Block, Gulshan e Iqbal, Karachi, Pakistan</Popup>
+                  <Popup>D-14 Block 2, Gulshan e Iqbal, Karachi, Pakistan</Popup>
                 </Marker>
               </MapContainer>
             </div>
@@ -98,7 +98,7 @@ const LocationSection = () => {
                 Our Location
               </h3>
               <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-                D-14 Block, Gulshan e Iqbal,
+                D-14 Block  2, Gulshan e Iqbal,
                 <br />
                 Karachi, Pakistan
               </p>

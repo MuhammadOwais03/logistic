@@ -41,13 +41,13 @@ const Navbar = () => {
               
                 <div className="flex items-center space-x-2">
                   <Phone className="w-4 h-4" />
-                  <span> +92 3168622164 - +92 3365009343</span>
+                  <span> +92 3365009343</span>
                 </div>
              
               
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
-                <span>D-14 Block, Gulshan e Iqbal, Karachi, Pakistan</span>
+                <span>D-14 Block 2, Gulshan e Iqbal, Karachi, Pakistan</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
@@ -65,7 +65,7 @@ const Navbar = () => {
             
             {/* Logo */}
             <div className="flex items-center space-x-2 cursor-pointer">          
-              <img src="/logo.png" alt="LogiTrans Logo" className="w-24  h-24 sm:w-32 sm:h-28" />            
+              <img src="/logo.png" alt="WorldWide Shipping and Logistics (Smc-Pvt) Ltd. Logo" className="w-24 h-24 sm:w-28 sm:h-28" />            
               <span className="text-2xl font-bold text-primary">WWS LOGISTICS</span>
             </div>
 

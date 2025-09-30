@@ -41,7 +41,7 @@ const Services = () => {
       icon: Plane,
       title: "Air Freight",
       description:
-        "We excel in providing top-tier air freight solutions that propel your business to new heights. Our dedicated team, extensive network, and cutting-edge technology.",
+      "We excel in providing top-tier air freight solutions that propel your business to new heights. Our dedicated team, extensive network, and cutting-edge technology.",
       features: [
         "Express delivery",
         "Temperature controlled",
@@ -65,18 +65,19 @@ const Services = () => {
       color: "from-blue-400 to-indigo-500",
     },
     {
-      icon: Shield,
-      title: "Custom Brokerage",
+      icon: AlertTriangle,
+      title: "Hazardous Cargo",
       description:
-        "We are an authorized customs clearance company in Pakistan, specializing in streamlining the intricate processes involved in international trade.",
+        "With a wealth of expertise and knowledge inherited since our company's inception, Seagate Logistics has consistently earned the trust of clients.",
       features: [
-        "Authorized customs clearance",
-        "Trade compliance support",
-        "Documentation management",
-        "Duty & tax consultation",
+        "Hazmat handling",
+        "Safety & compliance",
+        "Specialized equipment",
+        "Experienced team",
       ],
-      color: "from-green-500 to-emerald-500",
+      color: "from-red-500 to-orange-500",
     },
+    
     {
       icon: Package,
       title: "Warehousing",
@@ -117,17 +118,17 @@ const Services = () => {
       color: "from-teal-500 to-blue-500",
     },
     {
-      icon: AlertTriangle,
-      title: "Hazardous Cargo",
+      icon: Shield,
+      title: "Custom Brokerage",
       description:
-        "With a wealth of expertise and knowledge inherited since our company's inception, Seagate Logistics has consistently earned the trust of clients.",
+        "We are an authorized customs clearance company in Pakistan, specializing in streamlining the intricate processes involved in international trade.",
       features: [
-        "Hazmat handling",
-        "Safety & compliance",
-        "Specialized equipment",
-        "Experienced team",
+        "Authorized customs clearance",
+        "Trade compliance support",
+        "Documentation management",
+        "Duty & tax consultation",
       ],
-      color: "from-red-500 to-orange-500",
+      color: "from-green-500 to-emerald-500",
     },
   ];
 
@@ -565,7 +566,7 @@ const Services = () => {
               Ready to Transform Your Logistics?
             </h2>
             <p className="text-xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto">
-              Join thousands of businesses that trust LogiTrans for their
+              Join thousands of businesses that trust WorldWide Shipping and Logistics (Smc-Pvt) Ltd. for their
               logistics needs. Experience the difference that expertise,
               technology, and dedication can make.
             </p>

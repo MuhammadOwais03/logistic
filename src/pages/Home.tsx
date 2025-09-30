@@ -104,8 +104,8 @@ const ALL_SERVICES = [
 const ACHIEVEMENTS = [
   { icon: Code, number: "150+", label: "Projects Completed" },
   { icon: Users, number: "50+", label: "Happy Clients" },
-  { icon: Trophy, number: "10+", label: "Awards Won" },
-  { icon: Star, number: "5+", label: "Years Experience" }
+   { icon: Clock, number: "24/7", label: "Support Available" },
+  { icon: CheckCircle, number: "100%", label: "Client Satisfaction" }
 ];
 
 const FEATURES = [
@@ -185,7 +185,7 @@ const Home = () => {
         >
           <div className="inline-flex items-center px-6 py-3 bg-white/20 glass rounded-full mb-6 backdrop-blur-sm">
             <Sparkles className="w-5 h-5 text-orange-300 mr-2 animate-pulse" />
-            <span className="text-sm font-medium">Leading Logistics Excellence Since 2010</span>
+            <span className="text-sm font-medium">Your Modern Logistics Partner</span>
           </div>
 
           <h1 className="mb-6 text-white font-bold gradient-text">
@@ -297,7 +297,7 @@ const Home = () => {
               </div>
               <h2 className="mb-6">Our Vision & Values</h2>
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                At World Wide Shipping and Logistics (SMC-PVT) LTD, we envision a world where logistics seamlessly connects businesses and communities. Our commitment to innovation, sustainability, and customer satisfaction drives everything we do, every single day.
+                At WorldWide Shipping and Logistics (Smc-Pvt) Ltd, we envision a world where logistics seamlessly connects businesses and communities. Our commitment to innovation, sustainability, and customer satisfaction drives everything we do, every single day.
               </p>
               <div className="space-y-4">
                 {VALUES.map((value, i) => (
@@ -322,7 +322,7 @@ const Home = () => {
               <div className="relative">
                 <img
                   src={teamImage}
-                  alt="LogiTrans Team"
+                  alt="WorldWide Shipping and Logistics (Smc-Pvt) Ltd. Team"
                   className="rounded-2xl shadow-2xl w-full h-80 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl" />
@@ -446,7 +446,7 @@ const Home = () => {
               Ready to Optimize Your Supply Chain?
             </h2>
             <p className="text-xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto">
-              Join thousands of satisfied customers who trust LogiTrans for their logistics needs. Get started today with a custom quote.
+              Join thousands of satisfied customers who trust WorldWide Shipping and Logistics (Smc-Pvt) Ltd for their logistics needs. Get started today with a custom quote.
             </p>
             <Button
               variant="outline"

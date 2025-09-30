@@ -44,12 +44,12 @@ const About = () => {
 
   const achievements = [
   {
-    number: "1000+",
+    number: "100+",
     label: "Happy Clients",
     icon: Users,             // 👥 Users icon
   },
   {
-    number: "50+",
+    number: "150+",
     label: "Countries Served",
     icon: Globe2,            // 🌍 Globe icon
   },
@@ -64,6 +64,7 @@ const About = () => {
     icon: CheckCircle2,      // ✅ Success check icon
   },
 ];
+
 
   const whyChooseUs = [
     {
@@ -134,11 +135,11 @@ const About = () => {
               <Heart className="w-5 h-5 text-orange-500 mr-2" />
               <span className="text-sm font-medium">Our Story & Values</span>
             </div>
-            <h1 className="mb-6 text-white font-bold">About World Wide Shipping and Logistics (SMC-PVT) LTD</h1>
+            <h1 className="mb-6 text-white font-bold">About WorldWide Shipping and Logistics (Smc-Pvt) Ltd.</h1>
             
             <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8">
               Leading the logistics industry with innovative solutions, exceptional service, 
-              and unwavering commitment to customer success since 2010.
+              and unwavering commitment to customer success.
             </p>
             <Button size="lg" variant="outline" className="btn-scale btn-glow bg-white text-primary hover:text-primary hover:bg-primary-hover">
               Learn Our Story
@@ -235,21 +236,18 @@ const About = () => {
               </div>
               <h2 className="mb-6">Who We Are</h2>
               <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                World Wide Shipping and Logistics (SMC-PVT) LTD is a premier logistics company founded on the principles of reliability, 
+                WorldWide Shipping and Logistics (Smc-Pvt) Ltd. is a premier logistics company founded on the principles of reliability, 
                 innovation, and customer satisfaction. With over a decade of experience in the 
                 industry, we have built a reputation for delivering exceptional supply chain 
                 solutions to businesses of all sizes.
               </p>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                Our team of experienced professionals combines deep industry knowledge with 
-                cutting-edge technology to provide seamless logistics experiences. From small 
-                startups to Fortune 500 companies, we've helped thousands of businesses 
-                optimize their supply chains and achieve their growth objectives.
+                Our passionate team blends industry expertise with cutting-edge technology to deliver logistics solutions that are seamless, reliable, and future-ready. Whether supporting fast-growing startups or established enterprises, we empower businesses to streamline their supply chains, reduce costs, and accelerate growth with confidence.
               </p>
               <div className="space-y-4">
                 {[
-                  'Founded in 2010 with a vision for excellence',
-                  'Serving clients across 50+ countries worldwide',
+                  'Built to redefine modern logistics',
+                  'Serving clients across 150+ countries worldwide',
                   'State-of-the-art facilities and technology',
                   'Committed to sustainable logistics practices'
                 ].map((point, index) => (
@@ -280,11 +278,11 @@ const About = () => {
           <div className={`text-center mb-16 text-white fade-in ${visibleSections.has('why-choose-us') ? 'visible' : ''}`}>
             <div className="inline-flex items-center px-4 py-2 bg-white/20 glass rounded-full mb-6 backdrop-blur-sm">
               <Star className="w-5 h-5 text-orange-300 mr-2" />
-              <span className="text-sm font-medium">Why LogiTrans</span>
+              <span className="text-sm font-medium">Why WorldWide Shipping and Logistics (Smc-Pvt) Ltd</span>
             </div>
             <h2 className="mb-4 text-white">Why Choose Us</h2>
             <p className="text-white/90 text-lg max-w-3xl mx-auto">
-              Discover the advantages that make LogiTrans the preferred logistics partner 
+              Discover the advantages that make WorldWide Shipping and Logistics (Smc-Pvt) Ltd. the preferred logistics partner 
               for businesses worldwide.
             </p>
           </div>
@@ -393,7 +391,7 @@ const About = () => {
           <div className="bounce-in">
             <h2 className="mb-6 text-primary-foreground">Ready to Partner with Us?</h2>
             <p className="text-xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto">
-              Experience the LogiTrans difference. Let us help you streamline your supply chain 
+              Experience the WorldWide Shipping and Logistics (Smc-Pvt) Ltd. difference. Let us help you streamline your supply chain 
               and achieve your business objectives with our comprehensive logistics solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

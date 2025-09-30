@@ -35,10 +35,13 @@
     --input: 0 0% 96%;
     --ring: 28 100% 50%;
 
-    /* Footer dark theme */
+    /* Footer dark theme
     --footer-bg: 0 0% 29%;
     --footer-text: 0 0% 85%;
-    --footer-heading: 28 100% 50%;
+    --footer-heading: 28 100% 50%; */
+--footer-bg: 0 0% 96%;         /* Light gray background */
+--footer-text: 0 0% 20%;       /* Dark gray text */
+--footer-heading: 28 90% 50%;  /* Vivid orange for headings */
 
     /* Gradients and effects */
     --gradient-hero: linear-gradient(135deg, hsl(28 100% 50% / 0.1), hsl(28 100% 60% / 0.05));
