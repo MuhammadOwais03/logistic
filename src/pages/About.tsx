@@ -163,7 +163,12 @@ const About = () => {
               </div>
             </div>
 
-            <div className={`fade-in-right ${visibleSections.has('who-we-are') ? 'visible' : ''}`}>
+            <div className={`fade-in-right relative ${visibleSections.has('who-we-are') ? 'visible' : ''}`}>
+              <div className="absolute left-1/2 top-[53%] -translate-x-1/2 -translate-y-1/2 opacity-[0.09] pointer-events-none z-0">
+                <div className="w-96 h-96 flex items-center justify-center">
+                  <img src="/logo.png" alt="" className="w-full h-full object-contain" />
+                </div>
+              </div>
               <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4">
                 <Zap className="w-4 h-4 text-primary mr-2" />
                 <span className="text-sm font-medium text-primary">Our Foundation</span>
