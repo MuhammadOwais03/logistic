@@ -104,7 +104,7 @@ const ALL_SERVICES = [
 
 const ACHIEVEMENTS = [
   { icon: Code, number: "150+", label: "Projects Completed" },
-  { icon: Users, number: "50+", label: "Happy Clients" },
+  { icon: Users, number: "100+", label: "Happy Clients" },
    { icon: Clock, number: "24/7", label: "Support Available" },
   { icon: CheckCircle, number: "100%", label: "Client Satisfaction" }
 ];
