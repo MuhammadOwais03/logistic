@@ -117,8 +117,8 @@ const FEATURES = [
   },
   {
     icon: Users,
-    title: "Expert Team",
-    stats: "500+ Experts"
+    title: "",
+    stats: "Expert Team"
   },
   {
     icon: Shield,

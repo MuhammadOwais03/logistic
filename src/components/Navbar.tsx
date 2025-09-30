@@ -88,12 +88,12 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
-              
+{/*               
               <div className="ml-6 pl-6 border-l ">
                 <button className="btn-scale bg-primary text-primary-foreground font-semibold px-6 py-2.5 rounded-lg ">
                   Get Quote
                 </button>
-              </div>
+              </div> */}
             </div>
 
             {/* Mobile menu button */}
@@ -121,11 +121,11 @@ const Navbar = () => {
                   </Link>
                 ))}
                 
-                <div className="pt-6 mt-6 border-t ">
+                {/* <div className="pt-6 mt-6 border-t ">
                   <button className="btn-scale w-full bg-primary text-primary-foreground font-semibold px-6 py-4 rounded-lg ">
                     Get Quote
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           )}

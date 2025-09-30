@@ -332,7 +332,7 @@ const Contact = () => {
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+92 3168622164"
+                        placeholder="Enter your phone number"
                         className="h-12 border-0 border-b-2 border-gray-300 rounded-none focus:border-primary focus:ring-0 bg-transparent px-0"
                       />
                     </div>
