@@ -100,7 +100,7 @@ const Contact = () => {
 
     try {
       // EmailJS configuration - Replace these with your actual values
-      const serviceID = 'YOUR_SERVICE_ID';
+      const serviceID = 'service_ful7ee6';
       const templateID = 'template_htesbw9'; // Replace with your EmailJS Template ID
       const publicKey = 'gFOuyiNbhD3diYtlB'; // Replace with your EmailJS Public Key
 
