@@ -164,8 +164,8 @@ const About = () => {
             </div>
 
             <div className={`fade-in-right relative ${visibleSections.has('who-we-are') ? 'visible' : ''}`}>
-              <div className="absolute left-1/2 top-[53%] -translate-x-1/2 -translate-y-1/2 opacity-[0.09] pointer-events-none z-0">
-                <div className="w-96 h-96 flex items-center justify-center">
+              <div className="absolute left-1/2 top-[34%] lg:top-[66%] -translate-x-1/2 -translate-y-1/2 opacity-[0.09] pointer-events-none z-0">
+                <div className="w-64 h-64 lg:w-96 lg:h-96 flex items-center justify-center">
                   <img src="/logo.png" alt="" className="w-full h-full object-contain" />
                 </div>
               </div>

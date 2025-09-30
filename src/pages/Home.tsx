@@ -168,9 +168,9 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-orange-500/50 via-orange-500/50 to-orange-400/60 z-10" />
 
         {/* Floating elements */}
-        <div className="absolute top-20 left-20 w-4 h-4 bg-orange-400 rounded-full animate-pulse opacity-60" />
+        <div className="absolute bottom-[40%] left-8 md:top-20 md:left-20 w-12 h-12 md:w-24 md:h-24 bg-orange-400 rounded-full animate-pulse opacity-60" />
         <div
-          className="absolute top-40 right-32 w-6 h-6 bg-orange-300 rounded-full animate-pulse opacity-40"
+          className="absolute md:top-40 top-32 right-2 md:right-32 w-12 h-12 bg-orange-300 rounded-full animate-pulse opacity-40"
           style={{ animationDelay: "1s" }}
         />
         <div
@@ -179,7 +179,7 @@ const Home = () => {
         />
 
         <div
-          className={`relative z-20 text-center text-white py-28 px-2 sm:px-4 fade-in-scale ${
+          className={`relative z-20 text-center text-white py-12 md:py-16 px-2 sm:px-4 fade-in-scale ${
             visibleSections.has("hero") ? "visible" : ""
           }`}
         >
@@ -285,8 +285,8 @@ const Home = () => {
               }`}
             >
               {/* Watermark Logo */}
-              <div className="absolute left-1/2 top-[66%] -translate-x-1/2 -translate-y-1/2 opacity-[0.09] pointer-events-none z-0">
-                <div className="w-96 h-96 flex items-center justify-center">
+              <div className="absolute left-1/2 top-[50%] lg:top-[66%] -translate-x-1/2 -translate-y-1/2 opacity-[0.09] pointer-events-none z-0">
+                <div className="w-64 h-64 lg:w-96 lg:h-96 flex items-center justify-center">
                   <img src="/logo.png" alt="" className="w-full h-full object-contain" />
                 </div>
               </div>

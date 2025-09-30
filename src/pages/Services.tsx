@@ -17,7 +17,6 @@ import {
   Leaf,
   Network,
   Sparkles,
-  TrendingUp,
 } from "lucide-react";
 
 import warehouseBg from "@/assets/warehouse-bg.jpg";
