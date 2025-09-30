@@ -47,7 +47,7 @@ const Footer = () => {
                 <img
                   src="/logo.png"
                   alt="LogiTrans Logo"
-                  className="w-32 h-32"
+                  className="w-34 h-32"
                 />
                 <span className="text-2xl font-bold text-primary">
                   LogiTrans

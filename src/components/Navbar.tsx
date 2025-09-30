@@ -61,11 +61,11 @@ const Navbar = () => {
       {/* Main Navbar */}
       <nav className={`sticky top-0 z-50 ${isScrolled ? 'bg-white shadow-lg border-b border-border/50' : 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border'}`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24 lg:h-28">
+          <div className="flex items-center justify-between h-28 lg:h-28">
             
             {/* Logo */}
             <div className="flex items-center space-x-2 cursor-pointer">          
-              <img src="/logo.png" alt="LogiTrans Logo" className="w-24 h-24 sm:w-28 sm:h-28" />            
+              <img src="/logo.png" alt="LogiTrans Logo" className="w-24  h-24 sm:w-32 sm:h-28" />            
               <span className="text-2xl font-bold text-primary">WWS LOGISTICS</span>
             </div>
 
