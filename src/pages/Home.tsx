@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import heroImage from "@/assets/hero-logistics.jpg";
 import teamImage from "@/assets/team-logistics.jpg";
+import { Link } from "react-router-dom";
 
 const SERVICES_DATA = [
   {
@@ -179,7 +180,7 @@ const Home = () => {
         />
 
         <div
-          className={`relative z-20 text-center text-white py-12 md:py-16 px-2 sm:px-4 fade-in-scale ${
+          className={`relative z-20 text-center text-white py-12 md:py-28 px-2 sm:px-4 fade-in-scale ${
             visibleSections.has("hero") ? "visible" : ""
           }`}
         >
@@ -194,16 +195,16 @@ const Home = () => {
           <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-white/90 leading-relaxed">
             Your trusted partner for seamless supply chain solutions, connecting businesses worldwide with reliability, innovation, and unmatched expertise.
           </p>
-
+           <Link to={'/services' }> 
           <Button
             size="lg"
             className="btn-scale btn-glow text-lg px-8 py-6 bg-primary hover:bg-primary-hover mb-8"
           >
-            Explore <ArrowRight className="ml-2 w-5 h-5" />
+          Explore <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
-
+</Link>
           {/* Mouse scroll indicator */}
-          <div className="flex justify-center my-16">
+          <div className="flex justify-center my-12">
             <div className="mouse-scroll-indicator">
               <div className="mouse">
                 <div className="wheel" />
@@ -285,7 +286,7 @@ const Home = () => {
               }`}
             >
               {/* Watermark Logo */}
-              <div className="absolute left-1/2 top-[50%] lg:top-[66%] -translate-x-1/2 -translate-y-1/2 opacity-[0.09] pointer-events-none z-0">
+              <div className="absolute left-1/2 top-[50%] lg:top-[62%] -translate-x-1/2 -translate-y-1/2 opacity-[0.09] pointer-events-none z-0">
                 <div className="w-64 h-64 lg:w-96 lg:h-96 flex items-center justify-center">
                   <img src="/logo.png" alt="" className="w-full h-full object-contain" />
                 </div>
@@ -448,13 +449,14 @@ const Home = () => {
             <p className="text-xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto">
               Join thousands of satisfied customers who trust WorldWide Shipping and Logistics (Smc-Pvt) Ltd for their logistics needs. Get started today with a custom quote.
             </p>
+           <Link to={'/contact' }>
             <Button
               variant="outline"
               size="lg"
               className="btn-scale bg-primary-foreground text-primary"
             >
               Contact Us Now <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+            </Button></Link>
           </div>
         </div>
       </section>

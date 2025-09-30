@@ -61,12 +61,19 @@ const Navbar = () => {
       {/* Main Navbar */}
       <nav className={`sticky top-0 z-50 ${isScrolled ? 'bg-white shadow-lg border-b border-border/50' : 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border'}`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-28 lg:h-28">
+          <div className="flex items-center justify-between h-28 lg:h-32">
             
             {/* Logo */}
             <div className="flex items-center space-x-2 cursor-pointer">          
-              <img src="/logo.png" alt="WorldWide Shipping and Logistics (Smc-Pvt) Ltd. Logo" className="w-24 h-24 sm:w-28 sm:h-28" />            
-              <span className="text-2xl font-bold text-primary">WWS LOGISTICS</span>
+              <img src="/logo.png" alt="WorldWide Shipping and Logistics (Smc-Pvt) Ltd. Logo" className="w-24 h-24 sm:w-32 sm:h-32" />            
+             <div className="flex flex-col justify-center">
+                  <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-extrabold text-primary leading-tight whitespace-nowrap group-hover:text-primary/80 transition-all duration-500">
+                    WORLDWIDE SHIPPING &
+                  </span>
+                  <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-extrabold text-primary leading-tight whitespace-nowrap group-hover:text-primary/80 transition-all duration-500">
+                    LOGISTICS (SMC-PVT) LTD
+                  </span>
+                </div>
             </div>
 
             {/* Desktop Navigation */}

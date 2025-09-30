@@ -47,8 +47,8 @@ const Footer = () => {
             alt="WorldWide Shipping and Logistics Logo"
             className="w-[12rem] h-[12rem] flex-shrink-0"
           />
-          <span className="text-4xl font-bold text-primary leading-tight">
-            WorldWide Shipping and Logistics (Smc-Pvt) Ltd.
+          <span className="text-3xl font-bold text-primary leading-tight">
+            WORLDWIDE SHIPPING &LOGISTICS (SMC-PVT) LTD
           </span>
         </div>
 
