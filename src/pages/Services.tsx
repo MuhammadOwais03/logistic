@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -426,14 +427,16 @@ const Services = () => {
             Join thousands of businesses that trust us for their logistics needs. Experience the
             difference that expertise, technology, and dedication can make.
           </p>
+          <Link to={'/contact' }>
           <Button
             variant="outline"
             size="lg"
-            className="btn-scale bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+            className="btn-scale bg-primary-foreground text-primary hover:bg-primary-foreground hover:text-primary"
           >
             Start Partnership
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
+          </Link>
         </div>
       </section>
     </div>
