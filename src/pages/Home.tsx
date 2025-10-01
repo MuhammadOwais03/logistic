@@ -288,77 +288,43 @@ const Home = () => {
           </motion.div>
 
           <motion.div 
-  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6, staggerChildren: 0.2 }}
->
-  {SERVICES_DATA.map((service) => (
-    <motion.div
-      key={service.title}
-      className="flex"
-      initial={{ opacity: 0, y: 20, scale: 0.9 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      whileHover={{ y: -10, transition: { duration: 0.3 } }}
-    >
-      <Card className="interactive-card border-0 shadow-lg overflow-hidden bg-gradient-to-br from-white to-gray-50 flex-1">
-        <CardContent className="p-8 text-center relative h-full flex flex-col">
-          <motion.div
-            className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 icon-float shadow-lg`}
-            whileHover={{ scale: 1.05 }}
-          >
-            <service.icon className="w-10 h-10 text-white" />
-          </motion.div>
-          <h3 className="text-xl font-semibold mb-3 text-foreground">{service.title}</h3>
-          <p className="text-muted-foreground text-sm leading-relaxed flex-grow">
-            {service.description}
-          </p>
-          {/* gradient hover effect */}
-          <div
-            className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 hover:opacity-10 transition-opacity duration-500`}
-          />
-        </CardContent>
-      </Card>
-    </motion.div>
-  ))}
-</motion.div>
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, staggerChildren: 0.2 }}
+        >
+          {SERVICES_DATA.map((service) => (
+            <motion.div
+              key={service.title}
+              className="flex"
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
+            >
+              <Card className="interactive-card border-0 shadow-lg overflow-hidden bg-gradient-to-br from-white to-gray-50 flex-1">
+                <CardContent className="p-8 text-center relative h-full flex flex-col">
+                  <motion.div
+                    className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 icon-float shadow-lg`}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <service.icon className="w-10 h-10 text-white" />
+                  </motion.div>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">{service.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed flex-grow">
+                    {service.description}
+                  </p>
+                  {/* gradient hover effect */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 hover:opacity-10 transition-opacity duration-500`}
+                  />
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </motion.div>
 
-
-          {/* <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, staggerChildren: 0.2 }}
-          >
-            {SERVICES_DATA.map((service, i) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              >
-                <Card className="interactive-card border-0 shadow-lg overflow-hidden bg-gradient-to-br from-white to-gray-50">
-                  <CardContent className="p-8 text-center relative">
-                    <motion.div
-                      className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mx-auto mb-6 icon-float shadow-lg`}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      <service.icon className="w-10 h-10 text-white" />
-                    </motion.div>
-                    <h3 className="text-xl font-semibold mb-3 text-foreground">{service.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 hover:opacity-10 transition-opacity duration-500`}
-                    />
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div> */}
         </div>
       </motion.section>
 
