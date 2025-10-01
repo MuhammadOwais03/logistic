@@ -19,7 +19,7 @@ const Footer = () => {
   ];
 
   const services = [
-    "Freight Forwardig",
+    "Freight Forwarding",
     "Warehousing",
     "Supply Chain Solutions",
     "Express Delivery",
