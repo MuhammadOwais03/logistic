@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -150,7 +151,6 @@ const ADDITIONAL_SERVICES = [
 ];
 
 const Services = () => {
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const [showAllServices, setShowAllServices] = useState(false);
   const [hoveredService, setHoveredService] = useState<string | null>(null);
   const [hoveredAdditionalService, setHoveredAdditionalService] = useState<string | null>(null);
@@ -165,250 +165,295 @@ const Services = () => {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleSections((prev) => new Set(prev).add(entry.target.id));
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll("[id]").forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    document.documentElement.style.scrollBehavior = 'smooth';
+    return () => {
+      document.documentElement.style.scrollBehavior = '';
+    };
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       {/* Hero Section */}
-      <section
+      <motion.section
         id="services-hero"
         className="relative section-padding bg-cover bg-center bg-no-repeat bg-overlay-gradient parallax-bg"
         style={{ backgroundImage: `url(${warehouseBg})` }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.8 }}
       >
         <div className="relative z-20 container-width">
-          <div
-            className={`text-center text-white fade-in-scale ${
-              visibleSections.has("services-hero") ? "visible" : ""
-            }`}
+          <motion.div
+            className="text-center text-white"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+            <motion.div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Star className="w-5 h-5 text-orange-300 mr-2" />
               <span className="text-sm font-medium">Premium Logistics Services</span>
-            </div>
-            <h1 className="mb-6 text-white font-bold">Our Logistics Services</h1>
-            <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8">
+            </motion.div>
+            <motion.h1 className="mb-6 text-white font-bold" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}>
+              Our Logistics Services
+            </motion.h1>
+            <motion.p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }}>
               Comprehensive logistics solutions tailored to meet your unique business needs.
               From freight forwarding to supply chain management, we deliver excellence at every step.
-            </p>
+            </motion.p>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.8 }}>
             <Button
               size="lg"
               variant="outline"
               className="btn-scale bg-white text-primary hover:bg-white/90"
               onClick={scrollToServices}
+              // whileHover={{ scale: 1.05 }}
+              // whileTap={{ scale: 0.95 }}
             >
               Explore Our Services
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent"></div>
-      </section>
+      </motion.section>
 
       {/* Services Grid */}
-      <section id="services-grid" className="section-padding bg-background relative">
+      <motion.section id="services-grid" className="section-padding bg-background relative" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8, ease: "easeOut" }}>
         <div className="absolute inset-0 bg-dots opacity-30"></div>
         <div className="container-width relative z-10">
-          <div
-            className={`text-center mb-16 fade-in ${
-              visibleSections.has("services-grid") ? "visible" : ""
-            }`}
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4">
+            <motion.div className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4" whileHover={{ scale: 1.05 }}>
               <Zap className="w-4 h-4 text-primary mr-2" />
               <span className="text-sm font-medium text-primary">Complete Solutions</span>
-            </div>
-            <h2 className="mb-4">Choose Your Service</h2>
-            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+            </motion.div>
+            <motion.h2 className="mb-4">Choose Your Service</motion.h2>
+            <motion.p className="text-muted-foreground text-lg max-w-3xl mx-auto">
               Each service is designed with your business success in mind, backed by our expertise
               and commitment to excellence.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {servicesToShow.map((service, index) => (
-              <Card
-                key={service.title}
-                className={`group relative overflow-hidden border hover:border-primary/50 hover:shadow-lg bg-white transition-all duration-300 fade-in-scale ${
-                  visibleSections.has("services-grid") ? "visible" : ""
+<motion.div 
+  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+  initial={{ opacity: 0 }} 
+  whileInView={{ opacity: 1 }} 
+  viewport={{ once: true }} 
+  transition={{ duration: 0.6, staggerChildren: 0.2 }}
+>
+  <AnimatePresence mode="wait">
+    {servicesToShow.map((service, index) => (
+      <motion.div
+        key={service.title}
+        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: -20, scale: 0.9 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        whileHover={{ y: -10 }}
+        className="h-full"  // 👈 ensures wrapper fills height
+      >
+        <Card
+          className="group relative flex flex-col h-full border hover:border-primary/50 hover:shadow-lg bg-white transition-all duration-300"
+          onMouseEnter={() => setHoveredService(service.title)}
+          onMouseLeave={() => setHoveredService(null)}
+        >
+          {/* Overlay gradient */}
+          <div
+            className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 opacity-0 transition-opacity duration-300 ${
+              hoveredService === service.title ? "opacity-100" : ""
+            }`}
+          ></div>
+
+          <CardContent className="flex flex-col flex-1 p-6 relative z-10">
+            {/* Icon */}
+            <motion.div
+              className={`w-16 h-16 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 ${
+                hoveredService === service.title
+                  ? "bg-gradient-to-br from-primary/20 to-primary/30 border-2 border-primary/50 shadow-lg -translate-y-1"
+                  : "bg-gradient-to-br from-primary/10 to-primary/20 border-2 border-primary/20"
+              }`}
+              whileHover={{ scale: 1.05 }}
+            >
+              <service.icon
+                className={`w-7 h-7 transition-all duration-300 ${
+                  hoveredService === service.title ? "text-primary scale-110" : "text-primary/70"
                 }`}
-                style={{ animationDelay: `${(index % 4) * 100}ms` }}
-                onMouseEnter={() => setHoveredService(service.title)}
-                onMouseLeave={() => setHoveredService(null)}
-              >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 opacity-0 transition-opacity duration-300 ${
-                    hoveredService === service.title ? "opacity-100" : ""
-                  }`}
-                ></div>
+              />
+            </motion.div>
 
-                <CardContent className="p-6 relative z-10">
-                  <div
-                    className={`w-16 h-16 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 ${
-                      hoveredService === service.title
-                        ? "bg-gradient-to-br from-primary/20 to-primary/30 border-2 border-primary/50 shadow-lg -translate-y-1"
-                        : "bg-gradient-to-br from-primary/10 to-primary/20 border-2 border-primary/20"
-                    }`}
-                  >
-                    <service.icon
-                      className={`w-7 h-7 transition-all duration-300 ${
-                        hoveredService === service.title ? "text-primary scale-110" : "text-primary/70"
-                      }`}
-                    />
-                  </div>
+            {/* Title */}
+            <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
+              {service.title}
+            </h3>
 
-                  <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-3">
-                    {service.description}
-                  </p>
+            {/* Description */}
+            <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-3">
+              {service.description}
+            </p>
 
-                  <div className="space-y-2">
-                    {service.features.slice(0, 3).map((feature) => (
-                      <div key={feature} className="flex items-start space-x-2">
-                        <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {SERVICES.length > 4 && (
-            <div className="text-center mt-12">
-              <Button
-                size="lg"
-                className="btn-scale bg-primary hover:bg-primary-hover shadow-xl px-8 py-6"
-                onClick={() => setShowAllServices(!showAllServices)}
-              >
-                {showAllServices ? "Show Less Services" : "Show More Services"}
-                <ArrowRight
-                  className={`ml-2 w-5 h-5 transition-transform ${
-                    showAllServices ? "rotate-180" : ""
-                  }`}
-                />
-              </Button>
-              {!showAllServices && (
-                <p className="text-muted-foreground text-sm mt-3">
-                  Showing 4 of {SERVICES.length} services
-                </p>
-              )}
+            {/* Features */}
+            <div className="space-y-2 flex-1">
+              {service.features.slice(0, 3).map((feature) => (
+                <div key={feature} className="flex items-start space-x-2">
+                  <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-muted-foreground">{feature}</span>
+                </div>
+              ))}
             </div>
-          )}
+          </CardContent>
+        </Card>
+      </motion.div>
+    ))}
+  </AnimatePresence>
+</motion.div>
+
+{/* Show More Button */}
+{SERVICES.length > 4 && (
+  <motion.div className="text-center mt-12" whileHover={{ scale: 1.02 }}>
+    <Button
+      size="lg"
+      className="btn-scale bg-primary hover:bg-primary-hover shadow-xl px-8 py-6"
+      onClick={() => setShowAllServices(!showAllServices)}
+    >
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={showAllServices ? "less" : "more"}
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 10 }}
+          transition={{ duration: 0.2 }}
+        >
+          {showAllServices ? "Show Less Services" : "Show More Services"}
+        </motion.span>
+      </AnimatePresence>
+      <ArrowRight
+        className={`ml-2 w-5 h-5 transition-transform ${showAllServices ? "rotate-180" : ""}`}
+      />
+    </Button>
+    {!showAllServices && (
+      <p className="text-muted-foreground text-sm mt-3">
+        Showing 4 of {SERVICES.length} services
+      </p>
+    )}
+  </motion.div>
+)}
+
+
         </div>
-      </section>
+      </motion.section>
 
       {/* Additional Services */}
-      <section
+      <motion.section
         id="additional-services"
         className="section-padding relative bg-cover bg-center bg-fixed"
         style={{ backgroundImage: `url(${globalNetwork})` }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-slate-800/90 to-slate-900/90"></div>
         <div className="container-width relative z-20">
-          <div
-            className={`text-center mb-20 text-white fade-in ${
-              visibleSections.has("additional-services") ? "visible" : ""
-            }`}
+          <motion.div
+            className="text-center mb-20 text-white"
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full mb-6 border border-white/20">
+            <motion.div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full mb-6 border border-white/20" whileHover={{ scale: 1.05 }}>
               <Sparkles className="w-5 h-5 text-orange-300 mr-2" />
               <span className="text-sm font-medium">Innovation & Technology</span>
-            </div>
-            <h2 className="mb-6 text-white font-bold text-4xl lg:text-5xl">
+            </motion.div>
+            <motion.h2 className="mb-6 text-white font-bold text-4xl lg:text-5xl">
               Beyond Traditional Logistics
-            </h2>
-            <p className="text-white/90 text-xl max-w-4xl mx-auto leading-relaxed">
+            </motion.h2>
+            <motion.p className="text-white/90 text-xl max-w-4xl mx-auto leading-relaxed">
               Innovative solutions that go beyond traditional logistics, powered by cutting-edge
               technology and expertise.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, staggerChildren: 0.2 }}>
             {ADDITIONAL_SERVICES.map((service, index) => (
-              <Card
+              <motion.div
                 key={service.title}
-                className={`group relative overflow-hidden bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-500 fade-in-scale ${
-                  visibleSections.has("additional-services") ? "visible" : ""
-                }`}
-                style={{
-                  animationDelay: `${index * 150}ms`,
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                }}
-                onMouseEnter={() => setHoveredAdditionalService(service.title)}
-                onMouseLeave={() => setHoveredAdditionalService(null)}
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                whileHover={{ y: -10 }}
               >
-                <div
-                  className={`absolute inset-0 rounded-lg transition-all duration-500 ${
-                    hoveredAdditionalService === service.title
-                      ? "shadow-2xl shadow-white/25 border-2 border-white/30"
-                      : ""
-                  }`}
-                ></div>
-
-                <CardContent className="p-8 relative z-10">
+                <Card
+                  className="group relative overflow-hidden bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-500"
+                  style={{
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                  }}
+                  onMouseEnter={() => setHoveredAdditionalService(service.title)}
+                  onMouseLeave={() => setHoveredAdditionalService(null)}
+                >
                   <div
-                    className={`w-20 h-20 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 ${
+                    className={`absolute inset-0 rounded-lg transition-all duration-500 ${
                       hoveredAdditionalService === service.title
-                        ? "bg-white/20 border-2 border-white/30 shadow-lg -translate-y-1 scale-105"
-                        : "bg-white/10 border border-white/20"
+                        ? "shadow-2xl shadow-white/25 border-2 border-white/30"
+                        : ""
                     }`}
-                  >
-                    <service.icon
-                      className={`w-9 h-9 transition-all duration-300 ${
+                  ></div>
+
+                  <CardContent className="p-8 relative z-10">
+                    <motion.div
+                      className={`w-20 h-20 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 ${
                         hoveredAdditionalService === service.title
-                          ? "text-white scale-110"
-                          : "text-white/80"
+                          ? "bg-white/20 border-2 border-white/30 shadow-lg -translate-y-1 scale-105"
+                          : "bg-white/10 border border-white/20"
                       }`}
-                    />
-                  </div>
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <service.icon
+                        className={`w-9 h-9 transition-all duration-300 ${
+                          hoveredAdditionalService === service.title
+                            ? "text-white scale-110"
+                            : "text-white/80"
+                        }`}
+                      />
+                    </motion.div>
 
-                  <h3
-                    className={`text-2xl font-bold mb-4 transition-all duration-300 ${
-                      hoveredAdditionalService === service.title
-                        ? "text-white translate-x-2"
-                        : "text-white/95"
-                    }`}
-                  >
-                    {service.title}
-                  </h3>
+                    <h3
+                      className={`text-2xl font-bold mb-4 transition-all duration-300 ${
+                        hoveredAdditionalService === service.title
+                          ? "text-white translate-x-2"
+                          : "text-white/95"
+                      }`}
+                    >
+                      {service.title}
+                    </h3>
 
-                  <p className="text-white/80 text-sm mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
+                    <p className="text-white/80 text-sm mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
 
-                  <div className="space-y-3">
-                    {service.features.map((feature) => (
-                      <div key={feature} className="flex items-start space-x-3">
-                        <CheckCircle className="w-5 h-5 text-orange-300 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-white/90">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                    <div className="space-y-3">
+                      {service.features.map((feature) => (
+                        <div key={feature} className="flex items-start space-x-3">
+                          <CheckCircle className="w-5 h-5 text-orange-300 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-white/90">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-primary via-primary-hover to-primary text-primary-foreground relative overflow-hidden">
+      <motion.section className="section-padding bg-gradient-to-r from-primary via-primary-hover to-primary text-primary-foreground relative overflow-hidden" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8, ease: "easeOut" }}>
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
           <div
@@ -422,12 +467,15 @@ const Services = () => {
         </div>
 
         <div className="container-width text-center relative z-10">
-          <h2 className="mb-6 text-primary-foreground">Ready to Transform Your Logistics?</h2>
-          <p className="text-xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto">
+          <motion.h2 className="mb-6 text-primary-foreground">
+            Ready to Transform Your Logistics?
+          </motion.h2>
+          <motion.p className="text-xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto">
             Join thousands of businesses that trust us for their logistics needs. Experience the
             difference that expertise, technology, and dedication can make.
-          </p>
+          </motion.p>
           <Link to={'/contact' }>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Button
             variant="outline"
             size="lg"
@@ -436,9 +484,10 @@ const Services = () => {
             Start Partnership
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
+          </motion.div>
           </Link>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
