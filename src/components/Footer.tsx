@@ -44,11 +44,11 @@ const Footer = () => {
         <div className="flex items-center justify-center space-x-3 mb-12 pb-8 border-b border-white/20">
           <img
             src="/logo.png"
-            alt="WorldWide Shipping and Logistics Logo"
-            className="w-[12rem] h-[12rem] flex-shrink-0"
+            alt="WorldWide Shipping & Logistics Logo"
+            className="w-[14rem] h-[12rem] flex-shrink-0"
           />
           <span className="text-3xl font-bold text-primary leading-tight">
-            WORLDWIDE SHIPPING &LOGISTICS (SMC-PVT) LTD
+            WORLDWIDE SHIPPING & LOGISTICS
           </span>
         </div>
 
@@ -182,7 +182,7 @@ const Footer = () => {
         <div className="border-t border-white/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p style={{ color: "hsl(var(--footer-text))" }} className="text-sm">
-              © 2025 WorldWide Shipping and Logistics (Smc-Pvt) Ltd.. All rights reserved.
+              © 2025 WorldWide Shipping & Logistics.. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <a

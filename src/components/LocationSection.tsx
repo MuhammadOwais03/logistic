@@ -1,9 +1,9 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { MapPin, ArrowRight, Phone } from "lucide-react"; // Assuming Lucide icons are used
+import { MapPin, ArrowRight, Phone } from "lucide-react";
 import L from "leaflet";
-
 
 // Fix for default marker icon in Leaflet
 delete L.Icon.Default.prototype._getIconUrl;
@@ -15,11 +15,59 @@ L.Icon.Default.mergeOptions({
 });
 
 const LocationSection = () => {
-  // Coordinates for 123 Logistics Avenue, New York, NY 10001 (approximate)
   const position = [24.91351, 67.08265];
 
-  //24.89711671795686, 67.07179243456788
-  //24.897085089753528, 67.071769635792
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const mapVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+
+  const iconVariants = {
+    hidden: { scale: 0, rotate: -180 },
+    visible: {
+      scale: 1,
+      rotate: 0,
+      transition: { 
+        type: "spring",
+        stiffness: 200,
+        damping: 15,
+        delay: 0.5
+      }
+    }
+  };
+
+  const buttonVariants = {
+    hover: { 
+      scale: 1.05,
+      transition: { duration: 0.2 }
+    },
+    tap: { scale: 0.95 }
+  };
 
   return (
     <section className="bg-gray-100 relative min-h-[400px] sm:min-h-[500px] md:min-h-[600px]">
@@ -36,26 +84,57 @@ const LocationSection = () => {
       <div className="px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
-          <div className="text-center mb-6 sm:mb-8 lg:mb-12">
-            <div className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-primary/10 rounded-full mb-4">
+          <motion.div 
+            className="text-center mb-6 sm:mb-8 lg:mb-12"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <motion.div 
+              className="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-primary/10 rounded-full mb-4"
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+            >
               <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-primary mr-2" />
               <span className="text-xs sm:text-sm font-medium text-primary">
                 Find Us
               </span>
-            </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-gray-900">
+            </motion.div>
+
+            <motion.h2 
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 text-gray-900"
+              variants={itemVariants}
+            >
               Visit Our Office
-            </h2>
-            <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed px-2 sm:px-4">
+            </motion.h2>
+
+            <motion.p 
+              className="text-gray-600 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed px-2 sm:px-4"
+              variants={itemVariants}
+            >
               Located in the heart of the business district, our office is
               easily accessible and equipped with modern facilities to serve
               your logistics needs.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Map and Info Card */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-white/20">
-            <div className="h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-xl overflow-hidden relative">
+          <motion.div 
+            className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl border border-white/20"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            {/* Map Container */}
+            <motion.div 
+              className="h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-xl overflow-hidden relative"
+              variants={mapVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               <MapContainer
                 center={position}
                 zoom={15}
@@ -70,58 +149,149 @@ const LocationSection = () => {
                   <Popup>D-14 Block 2, Gulshan e Iqbal, Karachi, Pakistan</Popup>
                 </Marker>
               </MapContainer>
-            </div>
+            </motion.div>
 
             {/* Info Section */}
-            <div className="text-center relative z-10 mt-4 sm:mt-6 px-4">
-              {/* <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br  from-primary to-primary-hover rounded-3xl flex items-center justify-center mx-auto mb-4 sm:mb-6 icon-float">
-                <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-              </div> */}
-              {/* Double Ring Design */}
-          <div className="text-center">
-            <div className="relative group">
-              <div className="relative w-20 h-20 mx-auto mb-6">
-                {/* Outer ring */}
-                <div className="absolute inset-0 rounded-full border-4 border-gradient-to-r border-yellow-400 opacity-50 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500 animate-ping"></div>
-                {/* Inner container */}
-                <div className="absolute inset-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <MapPin className="w-8 h-8 text-white" />
-                </div>
-                {/* Center pulse */}
-                <div className="absolute inset-6 bg-white/30 rounded-full opacity-0 group-hover:opacity-100 animate-pulse transition-opacity duration-500"></div>
-              </div>
-              
-            </div>
-          </div>
+            <motion.div 
+              className="text-center relative z-10 mt-4 sm:mt-6 px-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              {/* Animated Icon */}
+              <motion.div 
+                className="text-center"
+                variants={iconVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                <motion.div 
+                  className="relative group"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="relative w-20 h-20 mx-auto mb-6">
+                    {/* Outer ring with enhanced animation */}
+                    <motion.div 
+                      className="absolute inset-0 rounded-full border-4 border-yellow-400"
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.5, 0.8, 0.5]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                    
+                    {/* Secondary pulse ring */}
+                    <motion.div 
+                      className="absolute inset-0 rounded-full border-4 border-orange-400"
+                      animate={{
+                        scale: [1, 1.3, 1],
+                        opacity: [0.3, 0.6, 0.3]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.5
+                      }}
+                    />
 
-              <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 text-gray-900">
+                    {/* Inner container */}
+                    <motion.div 
+                      className="absolute inset-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg"
+                      whileHover={{ 
+                        scale: 1.1,
+                        rotate: 360,
+                        transition: { duration: 0.6 }
+                      }}
+                    >
+                      <MapPin className="w-8 h-8 text-white" />
+                    </motion.div>
+
+                    {/* Center pulse */}
+                    <motion.div 
+                      className="absolute inset-6 bg-white/30 rounded-full"
+                      animate={{
+                        opacity: [0, 0.5, 0]
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Location Details */}
+              <motion.h3 
+                className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 text-gray-900"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
                 Our Location
-              </h3>
-              <p className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
-                D-14 Block  2, Gulshan e Iqbal,
+              </motion.h3>
+
+              <motion.p 
+                className="text-gray-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+              >
+                D-14 Block 2, Gulshan e Iqbal,
                 <br />
                 Karachi, Pakistan
-              </p>
-              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
-                <a
+              </motion.p>
+
+              {/* Action Buttons */}
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+              >
+                <motion.a
                   href="https://www.google.com/maps/dir/?api=1&destination=D-14+Block,Gulshan-e-Iqbal,Karachi,Pakistan"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="h-9 sm:h-10 px-4 sm:px-5 border border-primary hover:border-primary-300 text-primary font-medium rounded-lg flex items-center justify-center transform hover:scale-105 transition-all duration-200 text-sm sm:text-base"
+                  className="h-9 sm:h-10 px-4 sm:px-5 border border-primary hover:border-primary-300 text-primary font-medium rounded-lg flex items-center justify-center transition-all duration-200 text-sm sm:text-base"
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  whileTap="tap"
                 >
                   Get Directions
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </a>
-                <a
-                  href="tel:+922134981234"
-                  className="h-9 sm:h-10 px-4 sm:px-5 text-gray-600 hover:text-primary hover:bg-primary/10 font-medium rounded-lg flex items-center justify-center transform hover:scale-105 transition-all duration-200 text-sm sm:text-base"
+                  <motion.div
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </motion.div>
+                </motion.a>
+
+                <motion.a
+                  href="tel:+923365009343"
+                  className="h-9 sm:h-10 px-4 sm:px-5 text-gray-600 hover:text-primary hover:bg-primary/10 font-medium rounded-lg flex items-center justify-center transition-all duration-200 text-sm sm:text-base"
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  whileTap="tap"
                 >
                   Call Now
                   <Phone className="ml-2 w-4 h-4" />
-                </a>
-              </div>
-            </div>
-          </div>
+                </motion.a>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -174,50 +174,80 @@ const Services = () => {
   return (
     <div className="min-h-screen overflow-hidden">
       {/* Hero Section */}
-      <motion.section
-        id="services-hero"
-        className="relative section-padding bg-cover bg-center bg-no-repeat bg-overlay-gradient parallax-bg"
-        style={{ backgroundImage: `url(${warehouseBg})` }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8 }}
+    <motion.section
+  id="services-hero"
+  className="relative section-padding bg-cover bg-center bg-no-repeat parallax-bg"
+  style={{ backgroundImage: `url(${warehouseBg})` }}
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true, amount: 0.1 }}
+  transition={{ duration: 0.8 }}
+>
+  {/* Darker overlay for better text contrast */}
+  <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-orange-600/80 to-orange-500/85 z-10" />
+  
+  {/* Additional dark vignette for edges */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)] z-10" />
+
+  <div className="relative z-20 container-width">
+    <motion.div
+      className="text-center text-white"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
+      {/* Badge */}
+      <motion.div 
+        className="inline-flex items-center px-5 py-2.5 bg-white/20 backdrop-blur-md rounded-full mb-6 border border-white/30" 
+        whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.3)" }} 
+        whileTap={{ scale: 0.95 }}
       >
-        <div className="relative z-20 container-width">
-          <motion.div
-            className="text-center text-white"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <motion.div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Star className="w-5 h-5 text-orange-300 mr-2" />
-              <span className="text-sm font-medium">Premium Logistics Services</span>
-            </motion.div>
-            <motion.h1 className="mb-6 text-white font-bold" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}>
-              Our Logistics Services
-            </motion.h1>
-            <motion.p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }}>
-              Comprehensive logistics solutions tailored to meet your unique business needs.
-              From freight forwarding to supply chain management, we deliver excellence at every step.
-            </motion.p>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.8 }}>
-            <Button
-              size="lg"
-              variant="outline"
-              className="btn-scale bg-white text-primary hover:bg-white/90"
-              onClick={scrollToServices}
-              // whileHover={{ scale: 1.05 }}
-              // whileTap={{ scale: 0.95 }}
-            >
-              Explore Our Services
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent"></div>
-      </motion.section>
+        <Star className="w-5 h-5 text-orange-200 mr-2 animate-pulse" />
+        <span className="text-sm font-semibold tracking-wide">Premium Logistics Services</span>
+      </motion.div>
+
+      {/* Main Heading - Pure white with shadow */}
+      <motion.h1 
+        className="mb-6 text-white font-bold drop-shadow-2xl" 
+        initial={{ opacity: 0, y: -20 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        Our Logistics Services
+      </motion.h1>
+
+      {/* Description - Better contrast */}
+      <motion.p 
+        className="text-xl text-white max-w-4xl mx-auto leading-relaxed mb-8 drop-shadow-lg" 
+        initial={{ opacity: 0, y: 20 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.6, delay: 0.6 }}
+      >
+        Comprehensive logistics solutions tailored to meet your unique business needs.
+        From freight forwarding to supply chain management, we deliver excellence at every step.
+      </motion.p>
+
+      {/* CTA Button - Higher contrast */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
+        <Button
+          size="lg"
+          className="btn-scale bg-white text-primary hover:bg-orange-50 font-bold text-lg px-8 py-6 shadow-2xl"
+          onClick={scrollToServices}
+        >
+          Explore Our Services
+          <ArrowRight className="ml-2 w-5 h-5" />
+        </Button>
+      </motion.div>
+    </motion.div>
+  </div>
+
+  {/* Bottom gradient fade */}
+  <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent z-10"></div>
+</motion.section>
 
       {/* Services Grid */}
       <motion.section id="services-grid" className="section-padding bg-background relative" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8, ease: "easeOut" }}>

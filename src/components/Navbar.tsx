@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, MapPin, Mail, Phone } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, MapPin, Mail, Phone } from "lucide-react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,23 +8,23 @@ const Navbar = () => {
   const location = useLocation();
 
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Services', path: '/services' },
-    { name: 'Contact Us', path: '/contact' },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Contact Us", path: "/contact" },
   ];
 
   // Get active item based on current route
   const getActiveItem = () => {
     const currentPath = location.pathname;
-    const activeNav = navItems.find(item => item.path === currentPath);
-    return activeNav ? activeNav.name : 'Home';
+    const activeNav = navItems.find((item) => item.path === currentPath);
+    return activeNav ? activeNav.name : "Home";
   };
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = () => {
@@ -33,25 +33,29 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Top Bar */}
-      <div className="hidden lg:block bg-primary/5 border-b border-border/30">
+      {/* Top Bar - Hidden on mobile and tablet */}
+      <div className="hidden xl:block bg-primary/5 border-b border-border/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center items-center  py-2 text-sm">
-            <div className="flex items-center space-x-16 text-muted-foreground">
-              
-                <div className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4" />
-                  <span> +92 3365009343</span>
-                </div>
-             
-              
+          <div className="flex justify-center items-center py-2 text-sm">
+            <div className="flex items-center flex-wrap justify-center gap-x-8 gap-y-2 text-muted-foreground">
               <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4" />
-                <span>D-14 Block 2, Gulshan e Iqbal, Karachi, Pakistan</span>
+                <Phone className="w-4 h-4 flex-shrink-0" />
+                <span className="whitespace-nowrap">+92 3365009343</span>
               </div>
+
               <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4" />
-                <span> info@wws-logistics.com</span>
+                <MapPin className="w-4 h-4 flex-shrink-0" />
+                <span className="hidden 2xl:inline">
+                  D-14 Block 2, Gulshan e Iqbal, Karachi, Pakistan
+                </span>
+                <span className="xl:inline 2xl:hidden">Karachi, Pakistan</span>
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <Mail className="w-4 h-4 flex-shrink-0" />
+                <span className="whitespace-nowrap">
+                  info@wws-logistics.com
+                </span>
               </div>
             </div>
           </div>
@@ -59,85 +63,119 @@ const Navbar = () => {
       </div>
 
       {/* Main Navbar */}
-      <nav className={`sticky top-0 z-50 ${isScrolled ? 'bg-white shadow-lg border-b border-border/50' : 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border'}`}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-28 lg:h-32">
-            
+      <nav
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white shadow-lg border-b border-border/50"
+            : "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border"
+        }`}
+      >
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
+          <div className="flex items-center justify-between h-20 sm:h-24 lg:h-28 xl:h-32">
             {/* Logo */}
-            <div className="flex items-center space-x-2 cursor-pointer">          
-              <img src="/logo.png" alt="WorldWide Shipping and Logistics (Smc-Pvt) Ltd. Logo" className="w-24 h-24 sm:w-32 sm:h-32" />            
-             <div className="flex flex-col justify-center">
-                  <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-extrabold text-primary leading-tight whitespace-nowrap group-hover:text-primary/80 transition-all duration-500">
-                    WORLDWIDE SHIPPING &
-                  </span>
-                  <span className="text-xs sm:text-sm lg:text-base xl:text-lg font-extrabold text-primary leading-tight whitespace-nowrap group-hover:text-primary/80 transition-all duration-500">
-                    LOGISTICS (SMC-PVT) LTD
-                  </span>
-                </div>
-            </div>
+            <Link
+              to="/"
+              className="flex items-center gap-2 sm:gap-3 cursor-pointer group"
+            >
+              <img
+                src="/logo.png"
+                alt="WorldWide Shipping & Logistics Logo"
+                className="w-16 h-14 sm:w-24 sm:h-20 lg:w-32 lg:h-24 xl:w-48 xl:h-28 object-contain transition-transform duration-300 group-hover:scale-105"
+              />
+
+              <div className="flex flex-col justify-center">
+                <span className="text-[0.75rem] xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-extrabold text-primary leading-tight text-center sm:text-left max-w-[200px] sm:max-w-none group-hover:text-primary/80 transition-colors duration-300">
+                  WORLDWIDE SHIPPING & LOGISTICS
+                </span>
+              </div>
+            </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
+            <div className="hidden lg:flex items-center space-x-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
                   onClick={handleNavClick}
-                  className={`font-medium px-4 py-3 rounded-lg ${getActiveItem() === item.name ? 'text-primary bg-primary/10' : 'text-foreground'}`}
+                  className={`font-medium px-3 xl:px-4 py-2.5 xl:py-3 rounded-lg transition-all duration-200 hover:bg-primary/5 ${
+                    getActiveItem() === item.name
+                      ? "text-primary bg-primary/10"
+                      : "text-foreground"
+                  }`}
                 >
                   {item.name}
                 </Link>
               ))}
-{/*               
-              <div className="ml-6 pl-6 border-l ">
-                <button className="btn-scale bg-primary text-primary-foreground font-semibold px-6 py-2.5 rounded-lg ">
-                  Get Quote
-                </button>
-              </div> */}
             </div>
 
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-3 rounded-xl hover:bg-muted"
+              className="lg:hidden p-2 sm:p-3 rounded-xl hover:bg-muted transition-colors duration-200"
               aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? (
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
+              ) : (
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+              )}
             </button>
           </div>
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden border-t border-border bg-white animate-slideDown">
-              <div className="py-6 space-y-1">
+            <div className="lg:hidden border-t border-border bg-white animate-slideDown">
+              <div className="py-4 sm:py-6 space-y-1">
                 {navItems.map((item) => (
                   <Link
                     to={item.path}
                     key={item.name}
                     onClick={handleNavClick}
-                    className={`flex flex-col w-full text-left font-medium px-4 py-4 rounded-lg ${getActiveItem() === item.name ? 'text-primary bg-primary/10 border-l-4 border-primary' : 'text-foreground'}`}
+                    className={`block w-full text-left font-medium px-4 py-3 sm:py-4 rounded-lg transition-all duration-200 ${
+                      getActiveItem() === item.name
+                        ? "text-primary bg-primary/10 border-l-4 border-primary"
+                        : "text-foreground hover:bg-primary/5"
+                    }`}
                   >
                     {item.name}
                   </Link>
                 ))}
-                
-                {/* <div className="pt-6 mt-6 border-t ">
-                  <button className="btn-scale w-full bg-primary text-primary-foreground font-semibold px-6 py-4 rounded-lg ">
-                    Get Quote
-                  </button>
-                </div> */}
+
+                {/* Contact info in mobile menu */}
+                <div className="pt-4 mt-4 border-t border-border space-y-3 px-4">
+                  <div className="flex items-center space-x-3 text-sm text-muted-foreground">
+                    <Phone className="w-4 h-4 flex-shrink-0" />
+                    <span>+92 3365009343</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-sm text-muted-foreground">
+                    <Mail className="w-4 h-4 flex-shrink-0" />
+                    <span className="break-all">info@wws-logistics.com</span>
+                  </div>
+                  <div className="flex items-start space-x-3 text-sm text-muted-foreground">
+                    <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                    <span className="leading-relaxed">
+                      D-14 Block 2, Gulshan e Iqbal, Karachi, Pakistan
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           )}
         </div>
 
-        <style >{`
+        <style>{`
           .animate-slideDown {
             animation: slideDown 0.3s ease-out;
           }
           @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+              opacity: 0; 
+              transform: translateY(-10px); 
+            }
+            to { 
+              opacity: 1; 
+              transform: translateY(0); 
+            }
           }
         `}</style>
       </nav>

@@ -150,115 +150,248 @@ const Home = () => {
   return (
     <div className="min-h-screen overflow-hidden">
       {/* Hero Section */}
-      <motion.section
-        id="hero"
-        className="relative flex items-center justify-center bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8 }}
+   {/* Hero Section */}
+<motion.section
+  id="hero"
+  className="relative min-h-screen flex items-center justify-center overflow-hidden"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true, amount: 0.1 }}
+  transition={{ duration: 0.8 }}
+>
+  {/* Background Image with Overlay */}
+  <div 
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: `url(${heroImage})` }}
+  >
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-orange-600/85 to-orange-500/90" />
+  </div>
+
+  {/* Animated Background Pattern */}
+  <div className="absolute inset-0 opacity-10">
+    <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-blob" />
+    <div className="absolute top-40 right-20 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-blob animation-delay-2000" />
+    <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-blob animation-delay-4000" />
+  </div>
+
+  {/* Floating geometric shapes */}
+  <div className="absolute top-1/4 left-[5%] w-16 h-16 border-4 border-white/30 rotate-45 animate-float" />
+  <div className="absolute bottom-1/3 right-[8%] w-20 h-20 border-4 border-white/20 rounded-full animate-float-slow" />
+  <div className="absolute top-[15%] right-[15%] w-12 h-12 bg-white/10 backdrop-blur-sm animate-pulse" />
+
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+    <div className="grid lg:grid-cols-2 gap-12 items-center py-20">
+      
+      {/* Left Content */}
+      <motion.div
+        className="text-white space-y-8"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-orange-500/50 via-orange-500/50 to-orange-400/60 z-10" />
-
-        {/* Floating elements */}
-        <div className="absolute bottom-[40%] left-8 md:top-20 md:left-20 w-12 h-12 md:w-24 md:h-24 bg-orange-400 rounded-full animate-pulse opacity-60" />
-        <div
-          className="absolute md:top-40 top-32 right-2 md:right-32 w-12 h-12 bg-orange-300 rounded-full animate-pulse opacity-40"
-          style={{ animationDelay: "1s" }}
-        />
-        <div
-          className="absolute bottom-32 left-1/4 w-3 h-3 bg-orange-500 rounded-full animate-pulse opacity-50"
-          style={{ animationDelay: "2s" }}
-        />
-
-        <motion.div
-          className="relative z-20 text-center text-white py-12 md:py-28 px-2 sm:px-4"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+        {/* Badge */}
+        <motion.div 
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/15 backdrop-blur-md rounded-full border border-white/20"
+          whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.25)" }}
+          transition={{ duration: 0.3 }}
         >
-          <motion.div 
-            className="inline-flex items-center px-6 py-3 bg-white/20 glass rounded-full mb-6 backdrop-blur-sm"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Sparkles className="w-5 h-5 text-orange-300 mr-2 animate-pulse" />
-            <span className="text-sm font-medium">Your Modern Logistics Partner</span>
-          </motion.div>
-
-          <motion.h1 
-            className="mb-6 text-white font-bold gradient-text"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            Delivering Excellence in Logistics
-          </motion.h1>
-          <motion.p 
-            className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-white/90 leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            Your trusted partner for seamless supply chain solutions, connecting businesses worldwide with reliability, innovation, and unmatched expertise.
-          </motion.p>
-           <Link to={'/services' }> 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-          <Button
-            size="lg"
-            className="btn-scale btn-glow text-lg px-8 py-6 bg-primary hover:bg-primary-hover mb-8"
-            // whileHover={{ scale: 1.05 }}
-            // whileTap={{ scale: 0.95 }}
-          >
-          Explore <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
-          </motion.div>
-</Link>
-          {/* Mouse scroll indicator */}
-          <div className="flex justify-center my-12">
-            <motion.div 
-              className="mouse-scroll-indicator cursor-pointer"
-              whileHover={{ scale: 1.1 }}
-              onClick={() => {
-                document.getElementById('what-we-do')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              <div className="mouse">
-                <div className="wheel" />
-              </div>
-              <div className="scroll-text text-white/70 text-sm mt-2">Scroll Down</div>
-            </motion.div>
-          </div>
-
-          {/* Achievement stats */}
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, staggerChildren: 0.2 }}
-          >
-            {ACHIEVEMENTS.map((achievement, i) => (
-              <motion.div
-                key={achievement.label}
-                className="text-center glass p-4 rounded-xl backdrop-blur-sm"
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
-                <achievement.icon className="w-8 h-8 text-white mx-auto mb-1" />
-                <div className="text-2xl font-bold text-white mb-1">{achievement.number}</div>
-                <div className="text-xs text-white/80">{achievement.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
+          <Sparkles className="w-4 h-4 text-orange-200 animate-pulse" />
+          <span className="text-sm font-semibold tracking-wide">Modern Logistics Excellence</span>
         </motion.div>
-      </motion.section>
+
+        {/* Main Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight mb-4 text-white drop-shadow-2xl">
+            Delivering Excellence
+            <span className="block text-white mt-2">Across the Globe</span>
+          </h1>
+        </motion.div>
+
+        {/* Description */}
+        <motion.p 
+          className="text-lg sm:text-xl text-white/90 leading-relaxed max-w-xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          Your trusted partner for seamless supply chain solutions, connecting businesses worldwide with reliability, innovation, and unmatched expertise.
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          className="flex flex-wrap gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <Link to="/services">
+            <Button
+              size="lg"
+              className="btn-scale bg-white text-primary hover:bg-orange-50 text-lg px-8 py-6 font-bold shadow-2xl"
+            >
+              Explore Services
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </Link>
+          <Link to="/contact">
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-transparent border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6 font-semibold backdrop-blur-sm"
+            >
+              Get a Quote
+            </Button>
+          </Link>
+        </motion.div>
+
+        {/* Trust Indicators */}
+        <motion.div
+          className="flex items-center gap-6 pt-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1 }}
+        >
+          <div className="flex -space-x-3">
+            {['😊', '⭐', '👍', '💯'].map((emoji, i) => (
+              <div key={i} className="w-11 h-11 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white flex items-center justify-center text-lg">
+                {emoji}
+              </div>
+            ))}
+          </div>
+          <div className="text-sm">
+            <div className="font-bold text-base">100+ Happy Clients</div>
+            <div className="text-white/80">⭐⭐⭐⭐⭐ Rated Worldwide</div>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Right Content - Stats Cards */}
+      <motion.div
+        className="grid grid-cols-2 gap-4 lg:gap-6"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+      >
+        {ACHIEVEMENTS.map((achievement, index) => (
+          <motion.div
+            key={achievement.label}
+            className="group relative bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300"
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            whileHover={{ scale: 1.05, y: -5 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+          >
+            <div className="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-full blur-2xl group-hover:bg-white/10 transition-all" />
+            
+            <achievement.icon className="w-10 h-10 sm:w-12 sm:h-12 text-orange-100 mb-4 group-hover:scale-110 transition-transform" />
+            
+            <div className="relative">
+              <div className="text-3xl sm:text-4xl font-extrabold text-white mb-2">
+                {achievement.number}
+              </div>
+              <div className="text-sm sm:text-base text-white/80 font-medium">
+                {achievement.label}
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+    </div>
+
+    {/* Scroll Indicator */}
+    <motion.div 
+      className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, delay: 1.2 }}
+      whileHover={{ scale: 1.1 }}
+      onClick={() => {
+        document.getElementById('what-we-do')?.scrollIntoView({ behavior: 'smooth' });
+      }}
+    >
+      <div className="mouse-scroll-indicator">
+        <div className="mouse">
+          <div className="wheel" />
+        </div>
+      </div>
+      <span className="text-white/70 text-xs mt-2 font-medium tracking-wider">SCROLL</span>
+    </motion.div>
+  </div>
+
+  <style>{`
+    @keyframes blob {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(20px, -50px) scale(1.1); }
+      50% { transform: translate(-20px, 20px) scale(0.9); }
+      75% { transform: translate(50px, 10px) scale(1.05); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(45deg); }
+      50% { transform: translateY(-20px) rotate(45deg); }
+    }
+
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-30px); }
+    }
+
+    .animate-blob {
+      animation: blob 7s infinite;
+    }
+
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+
+    .animation-delay-4000 {
+      animation-delay: 4s;
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-float-slow {
+      animation: float-slow 8s ease-in-out infinite;
+    }
+
+    .mouse-scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .mouse {
+      width: 26px;
+      height: 42px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .wheel {
+      width: 4px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 2px;
+      position: absolute;
+      top: 8px;
+      animation: scroll 1.5s infinite;
+    }
+
+    @keyframes scroll {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(12px); }
+    }
+  `}</style>
+</motion.section>
 
       {/* What We Do Section */}
       <motion.section 
@@ -358,7 +491,7 @@ const Home = () => {
               </motion.div>
               <motion.h2 className="mb-6">Our Vision & Values</motion.h2>
               <motion.p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                At WorldWide Shipping and Logistics (Smc-Pvt) Ltd, we envision a world where logistics seamlessly connects businesses and communities. Our commitment to innovation, sustainability, and customer satisfaction drives everything we do, every single day.
+                At WorldWide Shipping & Logistics, we envision a world where logistics seamlessly connects businesses and communities. Our commitment to innovation, sustainability, and customer satisfaction drives everything we do, every single day.
               </motion.p>
               <motion.div className="space-y-4" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, staggerChildren: 0.2 }}>
                 {VALUES.map((value, i) => (
@@ -386,7 +519,7 @@ const Home = () => {
               <motion.div className="relative" whileHover={{ scale: 1.02 }}>
                 <img
                   src={teamImage}
-                  alt="WorldWide Shipping and Logistics (Smc-Pvt) Ltd. Team"
+                  alt="WorldWide Shipping & Logistics. Team"
                   className="rounded-2xl shadow-2xl w-full h-80 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl" />
@@ -556,7 +689,7 @@ const Home = () => {
               Ready to Optimize Your Supply Chain?
             </motion.h2>
             <motion.p className="text-xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto">
-              Join thousands of satisfied customers who trust WorldWide Shipping and Logistics (Smc-Pvt) Ltd for their logistics needs. Get started today with a custom quote.
+              Join thousands of satisfied customers who trust WorldWide Shipping & Logistics for their logistics needs. Get started today with a custom quote.
             </motion.p>
            <Link to={'/contact' }>
             <motion.div

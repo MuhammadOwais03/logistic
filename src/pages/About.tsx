@@ -115,65 +115,78 @@ const About = () => {
     <div className="min-h-screen overflow-hidden">
       {/* Enhanced Hero Section with Background Image */}
       <motion.section 
-        id="about-hero" 
-        className="relative section-padding bg-cover bg-center bg-no-repeat bg-overlay-gradient parallax-bg"
-        style={{ backgroundImage: `url(${teamLogistics})` }}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8 }}
+  id="about-hero" 
+  className="relative section-padding bg-cover bg-center bg-no-repeat parallax-bg"
+  style={{ backgroundImage: `url(${teamLogistics})` }}
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true, amount: 0.1 }}
+  transition={{ duration: 0.8 }}
+>
+  {/* Darker overlay for better text contrast */}
+  <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-orange-600/80 to-orange-500/85 z-10" />
+  
+  {/* Additional dark vignette for edges */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)] z-10" />
+
+  <div className="relative z-20 container-width">
+    <motion.div 
+      className="text-center text-white"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
+      {/* Badge */}
+      <motion.div 
+        className="inline-flex items-center px-5 py-2.5 bg-white/20 glass rounded-full mb-6 backdrop-blur-md border border-white/30"
+        whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.3)" }}
+        whileTap={{ scale: 0.95 }}
       >
-        <div className="relative z-20 container-width">
-          <motion.div 
-            className="text-center text-white"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <motion.div 
-              className="inline-flex items-center px-4 py-2 bg-white/20 glass rounded-full mb-6 backdrop-blur-sm"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Heart className="w-5 h-5 text-orange-500 mr-2" />
-              <span className="text-sm font-medium">Our Story & Values</span>
-            </motion.div>
-            <motion.h1 
-              className="mb-6 text-white font-bold"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              About WorldWide Shipping and Logistics (Smc-Pvt) Ltd.
-            </motion.h1>
-            
-            <motion.p 
-              className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              Leading the logistics industry with innovative solutions, exceptional service, 
-              and unwavering commitment to customer success.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-            >
-            <Button size="lg" variant="outline" className="btn-scale btn-glow bg-white text-primary hover:text-primary hover:bg-primary-hover" 
-                        
-            
-            >
-              Learn Our Story
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            </motion.div>
-            
-          </motion.div>
-        </div>
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent z-10"></div>
-      </motion.section>
+        <Heart className="w-5 h-5 text-orange-200 mr-2 animate-pulse" />
+        <span className="text-sm font-semibold tracking-wide">Our Story & Values</span>
+      </motion.div>
+
+      {/* Main Heading - Pure white with shadow */}
+      <motion.h1 
+        className="mb-6 text-white font-bold drop-shadow-2xl"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        About WorldWide Shipping & Logistics.
+      </motion.h1>
+      
+      {/* Description - Better contrast */}
+      <motion.p 
+        className="text-xl text-white max-w-4xl mx-auto leading-relaxed mb-8 drop-shadow-lg"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+      >
+        Leading the logistics industry with innovative solutions, exceptional service, 
+        and unwavering commitment to customer success.
+      </motion.p>
+
+      {/* CTA Button - Higher contrast */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+      >
+        <Button 
+          size="lg" 
+          className="btn-scale bg-white text-primary hover:bg-orange-50 font-bold text-lg px-8 py-6 shadow-2xl"
+        >
+          Learn Our Story
+          <ArrowRight className="ml-2 w-5 h-5" />
+        </Button>
+      </motion.div>
+    </motion.div>
+  </div>
+
+  {/* Bottom gradient fade */}
+  <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background to-transparent z-10"></div>
+</motion.section>
 
       {/* Who We Are Section */}
       <motion.section id="who-we-are" className="section-padding bg-background relative" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.8, ease: "easeOut" }}>
@@ -249,7 +262,7 @@ const About = () => {
               </motion.div>
               <motion.h2 className="mb-6">Who We Are</motion.h2>
               <motion.p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                WorldWide Shipping and Logistics (Smc-Pvt) Ltd. is a premier logistics company founded on the principles of reliability, 
+                WorldWide Shipping & Logistics is a premier logistics company founded on the principles of reliability, 
                 innovation, and customer satisfaction. With over a decade of experience in the 
                 industry, we have built a reputation for delivering exceptional supply chain 
                 solutions to businesses of all sizes.
@@ -303,11 +316,11 @@ const About = () => {
           >
             <motion.div className="inline-flex items-center px-4 py-2 bg-white/20 glass rounded-full mb-6 backdrop-blur-sm" whileHover={{ scale: 1.05 }}>
               <Star className="w-5 h-5 text-orange-300 mr-2" />
-              <span className="text-sm font-medium">Why WorldWide Shipping and Logistics (Smc-Pvt) Ltd</span>
+              <span className="text-sm font-medium">Why WorldWide Shipping & Logistics</span>
             </motion.div>
             <motion.h2 className="mb-4 text-white">Why Choose Us</motion.h2>
             <motion.p className="text-white/90 text-lg max-w-3xl mx-auto">
-              Discover the advantages that make WorldWide Shipping and Logistics (Smc-Pvt) Ltd. the preferred logistics partner 
+              Discover the advantages that make WorldWide Shipping & Logistics. the preferred logistics partner 
               for businesses worldwide.
             </motion.p>
           </motion.div>
@@ -430,7 +443,7 @@ const About = () => {
               Ready to Partner with Us?
             </motion.h2>
             <motion.p className="text-xl mb-8 text-primary-foreground/90 max-w-3xl mx-auto">
-              Experience the WorldWide Shipping and Logistics (Smc-Pvt) Ltd. difference. Let us help you streamline your supply chain 
+              Experience the WorldWide Shipping & Logistics. difference. Let us help you streamline your supply chain 
               and achieve your business objectives with our comprehensive logistics solutions.
             </motion.p>
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" whileHover={{ scale: 1.02 }}>
