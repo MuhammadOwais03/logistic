@@ -151,9 +151,19 @@ const Footer = () => {
                   style={{ color: "hsl(var(--footer-text))" }}
                   className="text-sm"
                 >
-                  D-14 Block 2, Gulshan e Iqbal,
+                  Address: Z-102, Ground Floor,
                   <br />
-                  Karachi, Pakistan
+                  Block-7 & 8, Shaheed-e- Millat, Karachi.
+
+                </span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Phone className="w-5 h-5 text-primary" />
+                <span
+                  style={{ color: "hsl(var(--footer-text))" }}
+                  className="text-sm"
+                >
+                  +92 3168622164  
                 </span>
               </div>
               <div className="flex items-center space-x-3">

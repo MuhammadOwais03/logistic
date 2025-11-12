@@ -165,9 +165,10 @@ const Contact = () => {
   };
 
   const contactItems = [
-    { icon: Phone, text: "+92 3365009343" },
+    { icon: Phone, text: "+92 3168622164 & +92 3168622164" },
+    // { icon: Phone, text: "+92 3168622164" },
     { icon: Mail, text: "info@wws-logistics.com" },
-    { icon: MapPin, text: "D-14 Block 2, Gulshan e Iqbal,\nKarachi, Pakistan" }
+    { icon: MapPin, text: "Address: Z-102, Ground Floor, \nBlock-7 & 8, Shaheed-e- Millat, Karachi." }
   ];
 
   const subjects = [

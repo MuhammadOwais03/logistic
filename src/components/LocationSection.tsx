@@ -15,7 +15,7 @@ L.Icon.Default.mergeOptions({
 });
 
 const LocationSection = () => {
-  const position = [24.91351, 67.08265];
+  const position = [24.8747312, 67.0763241];
 
   // Animation variants
   const containerVariants = {
@@ -146,7 +146,8 @@ const LocationSection = () => {
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 />
                 <Marker position={position}>
-                  <Popup>D-14 Block 2, Gulshan e Iqbal, Karachi, Pakistan</Popup>
+                  <Popup>Address: Z-102, Ground Floor, 
+                        Block-7 & 8, Shaheed-e- Millat, Karachi.</Popup>
                 </Marker>
               </MapContainer>
             </motion.div>
@@ -248,9 +249,9 @@ const LocationSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
-                D-14 Block 2, Gulshan e Iqbal,
+                Address: Z-102, Ground Floor,
                 <br />
-                Karachi, Pakistan
+                Block-7 & 8, Shaheed-e- Millat, Karachi.
               </motion.p>
 
               {/* Action Buttons */}
