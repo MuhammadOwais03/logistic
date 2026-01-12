@@ -40,12 +40,9 @@ const Navbar = () => {
             <div className="flex items-center flex-wrap justify-center gap-x-8 gap-y-2 text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 flex-shrink-0" />
-                <span className="whitespace-nowrap">+92 3168622164</span>
+                <span className="whitespace-nowrap">(021) 3430 5577</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4 flex-shrink-0" />
-                <span className="whitespace-nowrap">+92 3365009343</span>
-              </div>
+             
 
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4 flex-shrink-0" />
@@ -150,7 +147,7 @@ Block-7 & 8, Shaheed-e- Millat, Karachi.
                 <div className="pt-4 mt-4 border-t border-border space-y-3 px-4">
                   <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                     <Phone className="w-4 h-4 flex-shrink-0" />
-                    <span>+92 3168622164</span>
+                    <span>(021) 3430 5577</span>
                   </div>
                   <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                     <Mail className="w-4 h-4 flex-shrink-0" />

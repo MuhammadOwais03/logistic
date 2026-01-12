@@ -20,7 +20,13 @@ import {
   Trophy,
   Users,
   Clock,
+   Facebook,
+    Linkedin
 } from "lucide-react";
+
+
+
+
 import heroImage from "@/assets/hero-logistics.jpg";
 import teamImage from "@/assets/team-logistics.jpg";
 import { Link } from "react-router-dom";
@@ -291,6 +297,38 @@ const Home = () => {
                     ⭐⭐⭐⭐⭐ Rated Worldwide
                   </div>
                 </div>
+              </motion.div>
+
+               {/* Social Links */}
+              <motion.div
+                className="flex items-center gap-3 pt-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+              >
+                <span className="text-white/70 text-md font-medium mr-2">
+                  Follow Us:
+                </span>
+                <motion.a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-14 h-14 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 flex items-center justify-center hover:bg-white/25 transition-all"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Facebook className="w-6 h-6 text-white" />
+                </motion.a>
+                <motion.a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-14 h-14 rounded-full bg-white/15 backdrop-blur-sm border border-white/30 flex items-center justify-center hover:bg-white/25 transition-all"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Linkedin className="w-6 h-6 text-white" />
+                </motion.a>
               </motion.div>
             </motion.div>
 

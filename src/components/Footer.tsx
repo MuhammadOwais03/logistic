@@ -28,11 +28,12 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#" },
-    { icon: Twitter, href: "#" },
-    { icon: Linkedin, href: "#" },
-    { icon: Instagram, href: "#" },
-  ];
+  { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61584089459544" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/worldwide-shipping-logistics-a7810339b/" },
+  // { icon: Twitter, href: "#" },      // add when available
+  // { icon: Instagram, href: "#" },    // add when available
+];
+
 
   return (
     <footer
@@ -163,18 +164,10 @@ const Footer = () => {
                   style={{ color: "hsl(var(--footer-text))" }}
                   className="text-sm"
                 >
-                  +92 3168622164  
+                  (021) 3430 5577  
                 </span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-primary" />
-                <span
-                  style={{ color: "hsl(var(--footer-text))" }}
-                  className="text-sm"
-                >
-                  +92 3365009343
-                </span>
-              </div>
+              
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary" />
                 <span
@@ -192,7 +185,7 @@ const Footer = () => {
         <div className="border-t border-white/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p style={{ color: "hsl(var(--footer-text))" }} className="text-sm">
-              © 2025 WorldWide Shipping & Logistics.. All rights reserved.
+              © 2026 WorldWide Shipping & Logistics.. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <a
