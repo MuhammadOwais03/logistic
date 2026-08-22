@@ -167,7 +167,7 @@ const Contact = () => {
   const contactItems = [
     { icon: Phone, text: "(021) 3430 5577" },
     { icon: Mail, text: "info@wws-logistics.com" },
-    { icon: MapPin, text: "Address: Z-102, Ground Floor, \nBlock-7 & 8, Shaheed-e- Millat, Karachi." }
+    { icon: MapPin, text: "Address: Office No.219, 2nd Floor, \nAnum Blessing, Shaharah-e-Faisal, Karachi." }
   ];
 
   const subjects = [

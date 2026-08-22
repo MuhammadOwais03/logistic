@@ -47,8 +47,8 @@ const Navbar = () => {
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4 flex-shrink-0" />
                 <span className="hidden 2xl:inline">
-                  Address: Z-102, Ground Floor, 
-Block-7 & 8, Shaheed-e- Millat, Karachi.
+                 Address: Office No.219, 2nd Floor,
+                  Anum Blessing, Shaharah-e-Faisal, Karachi.
                 </span>
                 <span className="xl:inline 2xl:hidden">Karachi, Pakistan</span>
               </div>
@@ -156,8 +156,8 @@ Block-7 & 8, Shaheed-e- Millat, Karachi.
                   <div className="flex items-start space-x-3 text-sm text-muted-foreground">
                     <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
                     <span className="leading-relaxed">
-                      Address: Z-102, Ground Floor, 
-Block-7 & 8, Shaheed-e- Millat, Karachi.
+                      Address: Office No.219, 2nd Floor,
+                      Anum Blessing, Shaharah-e-Faisal, Karachi.
                     </span>
                   </div>
                 </div>

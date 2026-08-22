@@ -1,3 +1,5 @@
+
+
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -20,15 +22,14 @@ import {
   Trophy,
   Users,
   Clock,
-   Facebook,
-    Linkedin
+  Facebook,
+  Linkedin,
+  BadgeCheck,
 } from "lucide-react";
-
-
-
 
 import heroImage from "@/assets/hero-logistics.jpg";
 import teamImage from "@/assets/team-logistics.jpg";
+import kcci from "@/assets/aff_kcci.png";
 import { Link } from "react-router-dom";
 
 const SERVICES_DATA = [
@@ -49,7 +50,7 @@ const SERVICES_DATA = [
   {
     icon: Globe,
     title: "Supply Chain Solutions",
-    description: "End-to-end supply chain optimization for maximum .",
+    description: "End-to-end supply chain optimization for maximum efficiency.",
     gradient: "from-green-500 to-emerald-500",
   },
   {
@@ -134,7 +135,7 @@ const FEATURES = [
   },
   {
     icon: Users,
-    title: "",
+    title: "Expert Team",
     stats: "Expert Team",
   },
   {
@@ -167,7 +168,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen overflow-hidden">
-      {/* Hero Section */}
       {/* Hero Section */}
       <motion.section
         id="hero"
@@ -299,7 +299,7 @@ const Home = () => {
                 </div>
               </motion.div>
 
-               {/* Social Links */}
+              {/* Social Links */}
               <motion.div
                 className="flex items-center gap-3 pt-2"
                 initial={{ opacity: 0 }}
@@ -460,6 +460,103 @@ const Home = () => {
   `}</style>
       </motion.section>
 
+      {/* Affiliation Section - NEW */}
+      <motion.section
+        id="affiliation"
+        className="section-padding bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <div className="absolute inset-0 bg-grid opacity-5" />
+        
+        <div className="container-width relative z-10">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <motion.div
+              className="inline-flex items-center px-4 py-2 bg-primary/10 rounded-full mb-4"
+              whileHover={{ scale: 1.05 }}
+            >
+              <BadgeCheck className="w-4 h-4 text-primary mr-2" />
+              <span className="text-sm font-medium text-primary">
+                Trusted & Certified
+              </span>
+            </motion.div>
+            <motion.h2 className="mb-4">Our Affiliations</motion.h2>
+            <motion.p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Proud member of leading industry organizations, ensuring the highest standards of service and professionalism.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="flex justify-center items-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <motion.div
+              className="group relative bg-white rounded-3xl p-12 shadow-2xl hover:shadow-3xl transition-all duration-500 max-w-md"
+              whileHover={{ y: -10, scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all duration-500" />
+              
+              {/* Content */}
+              <div className="relative z-10">
+                <motion.div
+                  className="mb-6"
+                  whileHover={{ scale: 1.05, rotate: 2 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src={kcci}
+                    alt="Karachi Chamber of Commerce & Industry - KCCI 1959"
+                    className="w-full h-auto max-w-[280px] mx-auto drop-shadow-lg"
+                  />
+                </motion.div>
+                
+                <div className="text-center space-y-3">
+                  <h3 className="text-2xl font-bold text-foreground">
+                    Karachi Chamber of Commerce & Industry
+                  </h3>
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="h-px w-8 bg-primary" />
+                    {/* <p className="text-sm font-semibold text-primary uppercase tracking-wider">
+                      Member Since 1959
+                    </p> */}
+                    <div className="h-px w-8 bg-primary" />
+                  </div>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    As a certified member of KCCI, we uphold the highest standards of business excellence and ethical practices in the logistics industry.
+                  </p>
+                </div>
+
+                {/* Verification badge */}
+                <motion.div
+                  className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-full mx-auto"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <CheckCircle className="w-4 h-4 text-primary" />
+                  <span className="text-xs font-medium text-primary">
+                    Verified Member
+                  </span>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
       {/* What We Do Section */}
       <motion.section
         id="what-we-do"
@@ -618,7 +715,7 @@ const Home = () => {
               <motion.div className="relative" whileHover={{ scale: 1.02 }}>
                 <img
                   src={teamImage}
-                  alt="WorldWide Shipping & Logistics. Team"
+                  alt="WorldWide Shipping & Logistics Team"
                   className="rounded-2xl shadow-2xl w-full h-80 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl" />
@@ -633,7 +730,7 @@ const Home = () => {
                   {FEATURES.map((feature) => (
                     <motion.div
                       key={feature.title}
-                      className="card-float" // handles floating animation only
+                      className="card-float"
                       initial={{ opacity: 0, y: 20, scale: 0.9 }}
                       whileInView={{ opacity: 1, y: 0, scale: 1 }}
                       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -749,8 +846,6 @@ const Home = () => {
               onClick={() => setShowAllServices(!showAllServices)}
               size="lg"
               className="btn-scale btn-glow text-lg px-8 py-6 bg-primary hover:bg-primary-hover shadow-xl hover:shadow-2xl"
-              // whileHover={{ scale: 1.05 }}
-              // whileTap={{ scale: 0.95 }}
             >
               <AnimatePresence mode="wait">
                 <motion.span

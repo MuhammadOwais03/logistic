@@ -15,7 +15,7 @@ L.Icon.Default.mergeOptions({
 });
 
 const LocationSection = () => {
-  const position = [24.8747312, 67.0763241];
+  const position = [24.86736535760991, 67.0806163701265]; //24.86736535760991, 67.0806163701265
 
   // Animation variants
   const containerVariants = {
@@ -147,8 +147,8 @@ const LocationSection = () => {
                 />
                 <Marker position={position}>
                   <Popup>
-                    Address: Z-102, Ground Floor, Block-7 & 8, Shaheed-e-
-                    Millat, Karachi.
+                    Address: Office No.219, 2nd Floor,  Anum Blessing
+                    Shaharah-e-Faisal, Karachi.
                   </Popup>
                 </Marker>
               </MapContainer>
@@ -251,9 +251,9 @@ const LocationSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
-                Address: Z-102, Ground Floor,
+               Address: Office No.219, 2nd Floor,
                 <br />
-                Block-7 & 8, Shaheed-e- Millat, Karachi.
+                Anum Blessing, Shaharah-e-Faisal, Karachi.
               </motion.p>
 
               {/* Action Buttons */}

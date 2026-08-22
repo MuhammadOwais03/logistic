@@ -152,9 +152,9 @@ const Footer = () => {
                   style={{ color: "hsl(var(--footer-text))" }}
                   className="text-sm"
                 >
-                  Address: Z-102, Ground Floor,
+                  Address: Office No.219, 2nd Floor,
                   <br />
-                  Block-7 & 8, Shaheed-e- Millat, Karachi.
+                  Anum Blessing, Shaharah-e-Faisal, Karachi.
 
                 </span>
               </div>
@@ -185,7 +185,7 @@ const Footer = () => {
         <div className="border-t border-white/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p style={{ color: "hsl(var(--footer-text))" }} className="text-sm">
-              © 2026 WorldWide Shipping & Logistics.. All rights reserved.
+              © 2025 WorldWide Shipping & Logistics.. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <a
